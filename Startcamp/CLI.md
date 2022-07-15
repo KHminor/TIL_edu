@@ -127,3 +127,6 @@
 - git log --oneline 
   밑에서 위로 로그가 남음
 
+
+- 또 다른 git 계정에도 저장하려 할때.
+git remote add {주소} 
