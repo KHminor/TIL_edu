@@ -173,7 +173,7 @@ user mode의 경우 제한된 기계어만 사용가능하도록 함.
 
       ​	프로세스의 현재 상태를 나타내는데 중요한 정보가 된다.
 
-<img src="4_Process_management.assets/processcontext.PNG" style="zoom:50%;" />
+<img src="../../../../processcontext.PNG" style="zoom:50%;" />
 
 ---
 
