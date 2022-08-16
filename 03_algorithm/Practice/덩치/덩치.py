@@ -48,6 +48,7 @@ for num in range(T-1, 0, -1):
 
 
     else:  # 값이 같지 않은 경우
+
         rank[x_li[num]] = best_rank + 1
         cnt += 1
 
