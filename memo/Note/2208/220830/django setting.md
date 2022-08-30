@@ -7,3 +7,7 @@ $ pip install django==3.2.13
 vs code 에 
 pip install -r requirements.txt 
 읽어 들여서 설치하기
+
+어플리케이션 생성 
+
+$ python manage.py startapp pages

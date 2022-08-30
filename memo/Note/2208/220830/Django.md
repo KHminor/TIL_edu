@@ -357,3 +357,11 @@ html 에서는 key 값을 가지고 value 값을 불러오기
 <img src="Django.assets/image-20220830152048410.png" alt="image-20220830152048410" style="zoom:80%;" />
 
 <img src="Django.assets/image-20220830152057377.png" alt="image-20220830152057377" style="zoom:80%;" />
+
+---
+
+##### Variable Routing 의 필요성
+
+<img src="Django.assets/image-20220830164537189.png" alt="image-20220830164537189" style="zoom:80%;" />
+
+<img src="Django.assets/image-20220830164540030.png" alt="image-20220830164540030" style="zoom:80%;" />
