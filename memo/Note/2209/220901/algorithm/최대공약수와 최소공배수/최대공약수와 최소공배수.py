@@ -33,7 +33,7 @@ max = 1
 
 
 for i in range(2,big+1):
-    if num1_li[i] != 0 and num1_li[i] != 0:
+    if num1_li[i] != 0 or num2_li[i] != 0:
         # 최대 공약수
         if num1_li[i] <= num2_li[i]:
             min *= i**num1_li[i]
