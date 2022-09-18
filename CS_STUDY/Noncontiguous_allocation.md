@@ -36,6 +36,8 @@ Noncontiguous allocation(불연속 할당)
 
 <img src="Noncontiguous_allocation.assets/image-20220911154658798.png" alt="image-20220911154658798" style="zoom:50%;" />
 
+
+
 ---
 
 
