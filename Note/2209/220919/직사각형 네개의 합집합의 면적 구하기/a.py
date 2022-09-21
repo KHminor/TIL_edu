@@ -1,3 +1,5 @@
+from pprint import pprint
+
 visited = [[0]*101 for _ in range(101)]     # 방문 체크
 
 cnt = 0                                     # 카운트 변수 초기화
@@ -12,5 +14,5 @@ for _ in range(4):                          # 입력은 4줄
             else:                           # 1이 아닐 경우 방문 후 cnt 1증가
                 visited[si+i][sj+j] = 1
                 cnt += 1
-
+print(visited)
 print(cnt)
