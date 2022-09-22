@@ -1,20 +1,39 @@
-# # bfs - q 사용
-    # visited = [0]*(N+1)
-    # ch2[v2].sort()
-    # q = ch2[v2]
-    # visited[v2] = 1
-    # result2 = [v2]
-    # num = []
-    # while q:
-    #     v2 = q.pop(0)
-    #     if visited[v2] == 0:
-    #         result2.append(v2)
-    #         for i in range(len(ch2[v2])):
-    #             if ch2[v2][i] != 0 :
-    #                 num.append(ch2[v2][i])
-    #                 num.sort()
-    #         for j in num:
-    #             q.append(j)
-    #     visited[v2] = 1
-    # print(*result2)
-    #
+def dfs(v):
+    stack = [v]
+    visited = [0]*(N+1)
+    while stack:
+        v = stack.pop()
+        if visited[v] == 0:
+            print(v , end = ' ')
+            visited[v] = 1
+
+        arr[v].sort(reverse=True)
+        for j in arr[v]:
+            if visited[j] == 0:
+                stack.append(j)
+
+
+def bfs(v):
+    visited = [0]*(N+1)
+    q = [v]
+
+    while q:
+        v = q.pop(0)
+        if visited[v] == 0:
+            visited[v] = 1
+            print(v, end = ' ')
+        arr[v].sort()
+        for j in arr[v]:
+            if visited[j] == 0:
+                q.append(j)
+
+N,M,V = map(int,input().split())
+arr = [[] for _ in range(N+1)]
+for _ in range(M):
+    a,b = map(int,input().split())
+    arr[a].append(b)
+    arr[b].append(a)
+
+dfs(V)
+print()
+bfs(V)
