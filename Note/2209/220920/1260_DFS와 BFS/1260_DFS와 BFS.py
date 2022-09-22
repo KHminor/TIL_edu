@@ -1,5 +1,7 @@
 import sys
 sys.stdin = open('input.txt')
+# from collections import deque
+
 T = int(input())
 for tc in range(1,T+1):
     N,M,V = map(int,input().split())
@@ -29,11 +31,11 @@ for tc in range(1,T+1):
         else:
             ch2[c].append(p)
 
-    # print(ch1)
+    for i in range(len(ch1)):
+        ch1[i].sort(reverse=True)
 
     # dfs 우선 - stack 사용
     visited = [0]*(N+1)
-    ch1[v1].sort(reverse=True)
     stack = ch1[v1]
     visited[v1] = 1
     result = [v1]
@@ -45,7 +47,6 @@ for tc in range(1,T+1):
             for i in range(len(ch1[v1])):
                 if ch1[v1][i] != 0 :
                     num.append(ch1[v1][i])
-                    num.sort(reverse=True)
             for j in num:
                 stack.append(j)
         visited[v1] = 1
@@ -53,7 +54,6 @@ for tc in range(1,T+1):
 
     # bfs - q 사용
     visited = [0]*(N+1)
-    ch2[v2].sort()
     q = ch2[v2]
     visited[v2] = 1
     result2 = [v2]
@@ -65,7 +65,6 @@ for tc in range(1,T+1):
             for i in range(len(ch2[v2])):
                 if ch2[v2][i] != 0 :
                     num.append(ch2[v2][i])
-                    num.sort()
             for j in num:
                 q.append(j)
         visited[v2] = 1
