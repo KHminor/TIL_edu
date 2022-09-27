@@ -11,9 +11,6 @@ def digital(i,m):
         else:
             return
     else:
-        # if result >= m:
-        #     return
-        # else:
         for j in range(n):
             if not visited[j] and arr[i][j] != 0:
                 visited[j] = 1
@@ -21,8 +18,8 @@ def digital(i,m):
                 digital(i+1,m)
                 visited[j] = 0
                 m //= arr[i][j]
-# T = int(input())
-# for tc in range(1,T+1):
+
+
 T = int(input())
 for tc in range(1,T+1):
     n = int(input())
