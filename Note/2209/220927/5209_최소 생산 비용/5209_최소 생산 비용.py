@@ -19,6 +19,7 @@ def factory(i,s):
                     factory(i+1,s)
                     visited[j] = 0
                     s -= arr[i][j]
+
 T = int(input())
 for tc in range(1,T+1):
     n = int(input())
