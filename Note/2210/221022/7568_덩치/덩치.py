@@ -7,21 +7,17 @@ for i in range(n):
     li.append([x,y,i])
 
 li.sort(key=lambda t:(t[0],t[1]) ,reverse=True)
-# print(li)
-
-s = cnt = 0
 
 
 for i in range(n):
     score = 1
 
     for j in range(n):
-        if j == s: continue
+        if j == i: continue
 
-        if li[s][0] < li[j][0] and li[s][1] < li[j][1]:
+        if li[i][0] < li[j][0] and li[i][1] < li[j][1]:
             score += 1
 
-    result[li[s][2]] = score
-    s += 1
+    result[li[i][2]] = score
 
 print(*result)

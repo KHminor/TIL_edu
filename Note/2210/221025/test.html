@@ -34,5 +34,85 @@
   // }
 
 //  console.log(name)
+
+// 함수 선언문 (호이스팅)
+// nameCall('김홍민')
+// function nameCall (name) {
+//   alert(name)
+// }
+
+// 함수 표현식
+// const Callname = function(name) {
+//   alert(name)
+// } 
+// Callname('김홍민')
+
+// 화살표 함수
+// const Callname=(name) => {
+//   alert(name)
+// } 
+// Callname('김홍민')
+
+// const Callname=(name) => (
+//   alert(name)
+// )
+// Callname('김홍민')
+
+// const Callname=(name) => alert(name)
+// Callname('김홍민')
+
+// function getObject(name,age,hobby) {
+//   return {
+//     name,
+//     age,
+//     hobby
+//   }
+// }
+// const Mike = getObject('Mike',30,'poketball')
+// console.log(Mike.hobby)
+
+// console.log('age' in Mike)
+// console.log('bal' in Mike)
+
+// console.log(superman.name)
+// console.log(superman.age)
+
+// superman.gender = 'male'
+// superman.hairColor = 'black'
+
+// console.log(superman)
+
+// delete superman.hairColor
+// console.log(superman)
+
+// function isAudult(user) {
+//   if (!('age' in user && user.age < 20)) {
+//     return false
+//   }
+//   return true
+// }
+
+// const Mike = {
+//   name : 'Mike',
+//   age : 30
+// }
+
+// const Jane = {
+//   name : 'Jane'
+// }
+
+// console.log(isAudult(Jane))
+
+const Mike = {
+  name: 'Mike',
+  age: 30
+}
+
+for (x in Mike) {
+  console.log(Mike[x])
+}
+
+
+
 </script>
 </html>
