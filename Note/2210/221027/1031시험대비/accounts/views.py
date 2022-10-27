@@ -91,3 +91,7 @@ def delete(request):
         request.user.delete()
         auth_logout(request)
     return redirect('articles:index')
+
+
+def profile(request, user_pk):
+    if 
