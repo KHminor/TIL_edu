@@ -93,5 +93,28 @@ def delete(request):
     return redirect('articles:index')
 
 
-def profile(request, user_pk):
-    if 
+def profile(request, username):
+    User = get_user_model()
+    person = User.objects.get(username=username)
+    context = {
+        'person': person
+    }
+    return render(request, 'accounts/profile.html', context)
+
+
+def follow(request, user_pk):
+    if request.user.is_authenticated:
+        User = get_user_model()  
+        me = request.user
+        you = User.objects.get(pk=user_pk)
+
+        # 나와 상대가 같지 않은 경우
+        if me != you:
+            if you.follower.filter(pk=me.pk).exist():
+                you.follower.remove(me)
+            else:
+                you.follower.add(me)
+        else:
+            return render('accounts:profile', you.username)
+    else:
+        return redirect('accounts:login')
