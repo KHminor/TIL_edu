@@ -7,13 +7,12 @@ from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
-from django.views.decorators.http import require_safe,require_http_methods
+from django.views.decorators.http import require_safe,require_http_methods, require_POST
 
 # Create your views here.
 
-# User = get_user_model()
 
-
+@require_http_methods(['GET','POST'])
 def signup(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
@@ -29,7 +28,7 @@ def signup(request):
     }
     return render(request, 'accounts/signup.html', context)
 
-
+@require_http_methods(['GET','POST'])
 def login(request):
     if request.method == 'POST':
         form = AuthenticationForm(request,request.POST)
@@ -43,6 +42,7 @@ def login(request):
         'form': form
     }
     return render(request, 'accounts/login.html', context)
+
 
 
 def logout(request):
@@ -61,7 +61,6 @@ def change_password(request):
             update_session_auth_hash(request, form.user)
             return redirect('articles:index')
             
-
     else:
         form = PasswordChangeForm(request.user)
     context = {
@@ -70,6 +69,7 @@ def change_password(request):
     return render(request, 'accounts/change_password.html', context)
 
 
+@require_http_methods(['GET','POST'])
 def update(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST, instance=request.user, )
@@ -85,12 +85,13 @@ def update(request):
     }
     return render(request, 'accounts/update.html', context)
 
-
+@require_POST
 def delete(request):
     if request.user.is_authenticated:
         request.user.delete()
         auth_logout(request)
     return redirect('articles:index')
+
 
 
 def profile(request, username):
@@ -102,6 +103,7 @@ def profile(request, username):
     return render(request, 'accounts/profile.html', context)
 
 
+@require_POST
 def follow(request, user_pk):
     if request.user.is_authenticated:
         User = get_user_model()  

@@ -13,6 +13,8 @@
 7. JSON 데이터 주고 받기 
 8. 컨벤션 정하기
 
+
+
 우선 CRUD는 만든거 좀 빨라지긴 했음
 
 
@@ -289,3 +291,125 @@ form 변수에 AuthenticationForm() 매개변수 안에 request 요청과 reques
        - 만약 나와 상대방이 같은 데이터의 경우
 
        ![image-20221028174031271](memo.assets/image-20221028174031271.png)
+
+---
+
+13. base.html 꾸미기
+
+    1. 우선 요청한 유저가 인증된 유저인지 확인 후 
+
+    2. 맞다면
+
+       1. 프로필, 로그아웃, 회원 탈퇴,회원정보 수정 요소를 넣기
+
+       2. 여기서 프로필은 username이 필요하기에 user.username을 넣어주기
+
+          ![image-20221029165317207](memo.assets/image-20221029165317207.png)
+
+       3. 그리고 로그아웃과 회원 탈퇴의 경우 요청을 보내는 것이기에
+
+       4. form 태그로 method는 POST 해서 input 으로 전송해주기
+
+       ![image-20221029170225954](memo.assets/image-20221029170225954.png)
+
+       5. 회원 정보 수정 요소도 a 태그로 넣어주기
+
+       ![image-20221029170431344](memo.assets/image-20221029170431344.png)
+
+    3. 아니라면
+
+       1. 로그인과 회원가입을 넣어준다.
+
+       ![image-20221029170339437](memo.assets/image-20221029170339437.png)
+
+---
+
+14. profile.html 꾸미기
+
+    1. 최상단에는 user.username 의 요소를 보여주기
+
+       <img src="memo.assets/image-20221029170652624.png" alt="image-20221029170652624" style="zoom:50%;" />
+
+    2. 그 다음줄엔 구현했던 팔로워와 팔로일 보여주기
+
+       1. 팔로워는 나를 팔로잉하는 사람들이기 때문에
+
+       2. person.follower.all 과 filter 인 length 요소를 넣어주기
+
+          <img src="memo.assets/image-20221029170829504.png" alt="image-20221029170829504" style="zoom:50%;" />
+
+       3. 팔로잉은 내가 팔로우 하는 사람들이기에
+
+       4. person.following.all | length 요소를 넣어주기
+
+          <img src="memo.assets/image-20221029170950160.png" alt="image-20221029170950160" style="zoom:50%;" />
+
+---
+
+​	
+
+
+
+
+
+
+
+---
+
+Comment
+
+1. comment model 만들어주기 (FK로 article 넣어주기, content, 생성 날짜, 업데이트 날짜)
+
+2. form 만들어주기( 이때 중요한건 fields 를 다 넣어주는 것이 아니라 exclude로 article 요소를 제외해주기)
+
+3. detail 페이지에 comment form 을 넣어주기
+
+4. comment_create 할때 중요한건 
+
+   1. 어떤 article 에 댓글을 달것인지
+
+   2. comment는 request.POST 값을 CommentForm에 넣어주기
+
+   3. comment를 save하기 전에 어떤 article의 comment 인지 모르기 때문에
+
+   4. comment = save(commit=False) 이후
+
+   5. comment.article = article
+
+   6. comment.save() 해주기
+
+      <img src="memo.assets/image-20221029183406261.png" alt="image-20221029183406261" style="zoom:40%;" />
+
+5. 댓글을 detail 페이지에 보이게 하기 위해서
+
+   1. views.py 에서 detail 함수로 가서
+   2. comments = article의 댓글들이기에 역참조가 되어서  
+   3. article.comment_set.all()해서 context 에 담아주기
+   4. detail.html 페이지에서 for 문을 통해 하나씩 보여주기
+
+   
+
+6. 이후 댓글을 삭제하기 위한 방법으로 따로 url 을 만들어 view를 만들기
+
+   1.  여기서 url의 pk값으로는 article과 comment 둘다 받아야 하며
+
+   ![image-20221029205329467](memo.assets/image-20221029205329467.png)
+
+   2. view 에서는 comment 에 대한 pk 값만 받아 어떤 comment 인지 확인 후 삭제하도록 하기
+
+   <img src="memo.assets/image-20221029205345379.png" alt="image-20221029205345379" style="zoom:33%;" />
+
+   3. detail 페이지에서 삭제할때는 for문으로 받아온 comment 에서 article.pk, comment.pk를 보내어 삭제하기
+
+   <img src="memo.assets/image-20221029205357155.png" alt="image-20221029205357155" style="zoom: 33%;" />
+
+---
+
+잠시 :
+
+settings.AUTH_USER_MODEL: models.py에서 User모델을 참조할 때 사용
+
+get.user_model(): models.py 이외에서 User모델을 참조할 때 사용
+
+---
+
