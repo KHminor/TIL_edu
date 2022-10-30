@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1> 상세 페이지 </h1>
+    <hr>
+    <div>
+        <h2>{{movie.title}}</h2>
+        <img style='width: 30%; height: 30%;' src={{movie.poster_url}} alt="이미지">
+        <p>장르: {{movie.genre}}</p>
+        <p>개봉일: {{movie.release_date}}</p>
+        <p>평점: {{movie.score}}</p>
+        <p>관객수: {{movie.score}}</p>
+        <p>영화 줄거리</p>
+        <p>{{movie.movie_plot}}</p>
+    </div>
+    <br>
+    <form action="{% url 'movies:comments_create' movie.pk %}" method="POST">
+        {% csrf_token %}
+        {{comment_form}}
+        <input type="submit" value='댓글 생성'>
+    </form>
+
+    {% if comments %}
+        {% for comment in comments %}
+            <ul>
+                <li> {{comment.content}}</li> 
+                <form action="{% url 'movies:comment_delete' movie.pk comment.pk%}" method='POST'>
+                    {% csrf_token %}
+                    <input type="submit" value='삭제'>
+                </form>
+            </ul>
+        {% endfor %}
+    {% else %}
+        <p>댓글이 없어요...</p>
+    {% endif %}
+
+    <a href="{% url 'movies:update' movie.pk %}">영화 수정</a>
+    <a href="{% url 'movies:index' %}">뒤로가기</a>
+{% endblock content %}

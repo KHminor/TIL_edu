@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1>여기는 index</h1>
+    <a href="{% url 'movies:create' %}">영화추가</a>
+
+    {% if movies %}
+        {% for movie in movies %}
+            <div>
+                <hr>
+                <a href="{% url 'movies:delete' movie.pk%}">영화 삭제</a>
+                <a href="{% url 'movies:detail' movie.pk %}">
+                    <h3>{{movie.title}}</h3>
+                    <img style='width: 30%; height: 30%;' src={{movie.poster_url}} alt="이미지">
+                </a>
+            </div>
+            <div><p>{{movie.movie_plot}}</p></div>
+            <hr>
+        {% endfor %}
+    {% else %}
+    <p>영화를 등록 해주세요 :(</p>
+    {% endif %}
+{% endblock content %}
