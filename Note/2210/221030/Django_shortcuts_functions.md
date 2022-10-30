@@ -156,7 +156,97 @@ comment 작성
            * form 태그를 통해 삭제 요청을 보낼 수 있도록 
              * movie_pk와 comment_pk 값을 함께 보내주기
 
+accounts
 
+- model
+
+  - 기존 User를 재정의 해야 하기 때문에 
+    - from django.contrib.auth.models import AbstractUser 불러와서 상속받기
+
+- forms
+
+  - models 과 함께 import 해야할 것이
+    - from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+    - 그리고 현재 활성화 된 유저의 모델을 가져오기 위해
+      - from django.contrib.auth import get_user_model 
+    - 그리고 Meta또한 기존의 앱들의 forms.py 에서와는 달리 class 생성시
+      - import 해온 (UserCreationForm.Meta), (UserChangeForm.Meta) 가져오며
+      - model = get_user_model() 을 사용하고
+      - fields 또한 UserCreationForm.Meta.Fields, UserChangeForm.Meta.Fields  를 사용한다 물론 따로 넣어줄 수도 있다.
+
+- signup 
+
+  - POST 의 경우 
+
+    - form = CustomUserCreationForm(request.POST)
+    - 유효성 검사 후
+    - user = form.save()
+    - auth_login(request, user)
+
+  - GET의 경우
+
+    - form = CustomUserCreationForm()
+
+    
+
+- login
+
+  - GET
+
+    - 우선 로그인 페이지에 대한 form 을 가져오기 위해
+    - from django.contrib.auth.forms import AuthenticationForm 불러오고
+    - form = AuthenticationForm () 를 context 에 담아 보내기
+
+  - POST
+
+    - form = AuthenticationForm(request, request.user)
+    - 유효성 검사 후
+    - 현재 활동 중인 유저를 가져오는 from django.contrib.auth import get_user를 불러오고
+    - auth_login(request, form.get_user()) 이렇게 해서 바로 로그인 할 수 있도록 하기.
+
+    
+
+- logout
+
+  - 우선 요청한 유저가 허락된 유저인지 확인
+    - if request.user.is_authenticated:
+  - auth_logout(request)
+  - base.html 에서 로그인이 되어있는 유저에게 보이게 한 후
+  - form 태그로 해당 요청을 보낼 수 있도록 하기
+
+  
+
+- delete
+
+  - 우선 요청한 유저가 허가된 사용자인지 확인 후
+  - if request.user.is_authenticated:
+    - request.user.delete()
+  - 바로 로그아웃을 시킬 수 있도록
+    - from django.contrib.auth import logout as auth_logout 불러오고
+    - 요청에 대한 로그아웃을 시키도록 한다.
+    - auth_logout(request)
+
+  
+
+- update 
+
+  - GET
+    - form = CustomUserChangeForm(instance=request.user)
+    - context 에 담아서 보내주기
+  - POST
+    - form = CustomUserChangeForm(request.POST, instance=request.user)
+    - 유효성 검사 후, 저장
+
+- change_password
+
+  - GET
+    - form = PasswordChangeForm(request.user) 후 context 에 담아서 보내기
+  - POST
+    - form = PasswordChangeForm(request.user, request.POST)
+    - 유효성 검사 후 , form.save()
+    - session.update.auth.hash(request,form.user)
+
+여기까지 복습 했으면 데코레이터랑 follow(N:M 공부) 
 
 ---
 

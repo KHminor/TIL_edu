@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>업데이트</h1>
+  <hr>
+  <form method='POST'>
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value='수정'>
+  </form>
+  <a href="{% url 'movies:index' %}">메인으로 가기</a>
+{% endblock content %}
