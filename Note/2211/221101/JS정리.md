@@ -434,4 +434,407 @@ JS에서 함수를 정의하는 주로 사용하는 2가지 방법
 
 
 
-103page부터 정리 다시 하기
+- 함수의 정의
+
+  - 매개변수보다 인자의 개수가 많을 경우
+
+  ```javascript
+  const noArgs = function() {
+      return 0
+  }
+  noArgs(1,2,3) // 0
+  
+  const twoArgs = function(arg1,arg2) {
+      return [arg1,arg2]
+  }
+  twoArgs(1,2,3) // [1,2]
+  ```
+
+  - 매개변수보다 인자의 개수가 적을 경우
+
+  ```javascript
+  const threeArgs = function (arg1, arg2, arg3) {
+      return [arg1,arg2,arg3]
+  }
+  
+  threeArgs()    // [undefined,undefined,undefined]
+  threeArgs(1)   // [1,undefined,undefined]
+  threeArgs(1,2) // [1,2,undefined]
+  ```
+
+  
+
+- Spread syntax
+
+  - 전개 구문
+
+  - 전개 구문을 사용하면 배열이나 문자열과 같이 반복 가능한 객체를 배열의 경우는 요소,
+
+    ​	함수의 경우는 인자로 확장할 수 있음
+
+    1. 배열과의 사용
+    2. 함수와의 사용 (Rest parameters)
+
+    ```javascript
+    let parts = ['shoulders', 'knees']
+    let lyrics = ['head', ...parts, 'and', 'toes']
+    // ['hard', 'shoulders', 'knees', 'and', 'toes']
+    ```
+
+    
+
+---
+
+## 선언식과 표현식
+
+```javascript
+// 함수 표현식
+const add = function (args) {}
+
+// 함수 선언식
+function sub(args) {}
+
+console.log(typeof add) // function
+console.log(typeof sub) // function
+```
+
+
+
+- 호이스팅
+
+  - 표현식
+
+    ```javascript
+    sub(2,7) 
+    // Uncaught ReferenceError: Cannot access 'sub' before initialization
+    // 함수 표현식으로 선언한 함수는 함수 정의 전에 호출 시 에러 발생
+    
+    const sub = function(num1,num2){
+        return num1+num2
+    }
+    ```
+
+    
+
+  - 선언식
+
+    ```javascript
+    add(2, 7) // 9
+    
+    function add (num1,num2) {
+        return num1+num2
+    }
+    ```
+
+---
+
+## Arrow Function
+
+- 화살표 함수
+
+  - 함수를 비교적 간결하게 정의할 수 있는 문법
+  - function 키워드와 중괄호를 이용한 구문을 짧게 사용하기 위해 탄생
+    1. function 키워드 생략가능
+    2. 함수의 매개변수가 하나 뿐이라면 매개변수의 () 생략 가능
+    3. 함수의 내용이 한 줄이라면 {} 와 return 또한 생략 가능
+  - 화살표 함수는 항상 익명 함수
+    - === 함수 표현식에서만 사용가능
+
+  
+
+- 즉시 실행 함수(IIFE, Immediately Invoked Function Expression)
+
+  - 선언과 동시에 실행되는 함수
+
+  - 함수의 선언 끝에 () 를 추가하여 선언되자 마자 실행하는 형태
+
+  - ()에 값을 넣어 인자로 넘겨줄 수 있음
+
+  - 즉시 실행 함수는 선언과 동시에 실행되기 때문에 같은 함수를 다시 호출할 수 없음
+
+  - 이러한 특징을 살려 초기화 부분에 많이 사용
+
+  - 일회성 함수이므로 익명하무로 사용하는 것이 일반적
+
+    ```javascript
+    (function(num) {return num**3}(2)) // 8
+    
+    (num => num**3)(2) //8
+    ```
+
+    
+
+---
+
+## Array와 Object
+
+- JavaScript의 데이터 타입 중 참조 타입에 해당 하는 타입은 Array와 Object이며 객체라고도 말한다.
+
+- 객체는 속성들의 모음(collection)
+
+  
+
+- #### 배열(Array)
+
+  - 키와 속성들을 담고 있는 참조 타입의 객체
+
+  - 순서를 보장하는 특징이 있음
+
+  - 배열의 길이는 array.length 형태로 접근 가능
+
+    - 배열의 마지막 원소는 array.length -1 로 접근
+
+  - 배열 메서드 기초
+
+    - reverse
+
+      - 원본 배열의 요소들의 순서를 반대로 정렬
+
+      ```javascript
+      const number = [1, 2, 3, 4, 5]
+      numbers.reverse()
+      console.log(numbers) // [5, 4, 3, 2, 1]
+      ```
+
+      
+
+    - push & pop
+
+      - 배열의 가장 뒤에 요소를 추가(push) 또는 제거(pop)
+
+      ```javascript
+      const numbers = [1, 2, 3, 4, 5]
+      
+      numbers.push(100)
+      console.log(numbers) // [1, 2, 3, 4, 5, 100]
+      
+      numbers.pop()
+      console.log(numbers) // [1, 2, 3, 4, 5]
+      ```
+
+      
+
+    - unshift & shift
+
+      - 배열의 가장 앞에 요소를 추가 또는 제거
+
+      
+
+    - includes
+
+      - 배열에 특정 값이 존재하는지 판별 후 참/거짓 반환
+
+      ```javascript
+      const numbers = [1, 2, 3, 4, 5]
+      
+      console.log(numbers.includes(1)) // true
+      console.log(numbers.includes(100)) // false
+      ```
+
+      
+
+    - index0f
+
+      - 배열에 특정 값이 존재하는지 판별 후 인덱스 반환
+      - 요소가 없을 경우 -1 반환
+
+      ```javascript
+      const numbers = [1, 2, 3, 4, 5]
+      let result
+      
+      result = numbers.index0f(3) // 2
+      console.log(result)
+      
+      result = numbers.index0f(100) // -1
+      console.log(result)
+      ```
+
+      
+
+    - join
+
+      - 배열의 모든 요소를 구분자를 이용하여 연결 
+      - 구분자 생략 시 쉼표 기준
+
+      ```javascript
+      const numbers = [1, 2, 3, 4, 5]
+      let result
+      
+      result = numbers.join() // 1,2,3,4,5
+      result = numbers.join('') // 12345
+      result = numbers.join(' ') // 1 2 3 4 5
+      result = numbers.join('-') // 1-2-3-4-5
+      ```
+
+      
+
+---
+
+## Array Helper Methods
+
+- 배열을 순회하며 특정 로지글 수행하는 메서드
+
+- 메서드 호출 시 인자로 callback 함수를 받는 것이 특징
+
+  - callback 함수: 어떤 함수의 내부에서 실행될 목적으로 인자로 넘겨받는 함수
+
+  
+
+- forEach  (반환 값 없음)
+
+  - 배열의 각 요소에 대해 콜백 함수를 한 번씩 실행
+
+  ```javascript
+  array.forEach(callback(element[, index[, array]]))
+  
+  // 인자로 주어지는 함수(콜백 함수)를 배열의 각 요소에 대해 한 번씩 실행
+  // // 콜백 함수는 3가지 매개변수로 구성
+  // // // 1. element: 배열의 요소
+  // // // 2. index: 배열의 요소읜 인덱스
+  // // // 3. array: 배열 자체
+  // 반환 값(return)없음
+  
+  // 1. 일단 사용해보기
+  const colors = ['red','blue','green']
+  
+  printFunc = function(color) {
+      console.log(color)
+  }
+  colors.forEach(printFunc)
+  
+  // 2. 함수 정의를 인자로 넣어보기
+  colors.forEach(function(color) {
+  	consol.log(color)
+  })
+  
+  // 3. 화살표 함수 적용하기
+  colors.forEach((color) => {
+      return console.log(color)
+  })
+  ```
+
+  
+
+- map
+
+  - 콜백 함수의 반환 값을 요소로 하는 새로운 배열 반환
+  - forEach + return 이라고 생가가기
+
+  ```javascript
+  // 1. 일단 사용해보기
+  const numbers = [1,2,3]
+  
+  // 함수 정의 (표현식)
+  const doubleFunc = function (number) {
+      return number + 2
+  }
+  
+  // 함수를 다른 함수의 인자로 넣기(콜백 함수)
+  const doubleNumbers = numbers.map(doubleFunc)
+  console.log(doubleNumbers) //[2,4,6]
+  
+  // 2. 함수 정의를 인자로 넣어보기
+  const doubleNumbers = numbers.map(function (number) {
+      return number *2
+  })
+  
+  // 3. 화살표 함수 적용하기
+  const doubleNumbers = numbers.map((number) => { return number *2})
+  
+  ```
+
+  
+
+- filter
+
+  - 콜백 함수의 반환 값이 참인 요소들만 모아서 새로운 배열을 반환
+  - 기존 배열의 요소들을 필터링할 때 유용
+
+  ```javascript
+   const products = [
+       {name: 'cucumber', type: 'vegetable'},
+       {name: 'banana', type: 'fruit'},
+       {name: 'carrot', type: 'vegetable'},
+       {name: 'apple', type: 'fruit'},
+   ]
+   
+   const fruits = products.filter((product) => {
+       return product.type === 'fruit'
+   })
+   console.log(fruits)
+
+- reduce
+
+  - 콜백 함수의 반환 값들을 하나의 값(acc)에 누적 후 반환
+
+  - acc = 이전 callback 함수의 반환 값이 누적되는 변수
+
+  - initialValue(optional) = 최초 callback 함수 호출 시 accㅔ 할당되는 값, 
+
+    ​							default 값은 배열의 첫 번째 값
+
+    ```javascript
+    const tests = [90, 90, 80, 77]
+    
+    const sm = tests.reduce(function(total,x) {
+    return total+x}, 0)
+    
+    const sum = tests.reduce(total,x)=> total+x,0)
+    ```
+
+    
+
+- find
+
+  - 콜백 함수의 반환 값이 참이면 해당 요소를 반환
+  - 콜백 함수의 반환 값이 true면, 조건을 만족하는 첫번째 요소를 반환
+  - 찾는 값이 배열에 없으면 undefined 반환
+
+  ```javascript
+  const avengers = [
+      {name: 'Tony Stark', age:45},
+      {name: 'Steve Rogers', age:32},
+      {name: 'Thor', age:40},
+  ]
+  
+  const avenger = avengers.find((avenger) => {
+      return avenger.name === 'Tony Stark'
+  })
+  ```
+
+  
+
+- some
+
+  - 배열의 요소 중 하나라도 판별 함수를 통과하면 참을 반환
+  - 모든 요소가 통과하지 못하면 거짓 반환
+  - 빈 배열은 항상 false 반환
+
+  ```javascript
+  const arr = [1, 2, 3, 4, 5]
+  const result = arr.some((elem) => {
+      return elem %2 === 0
+  })
+  // true
+  ```
+
+  
+
+- every
+
+  - 배열의 모든 요소가 판별 함수를 통과하면 참을 반환
+  - 하나의 요소라도 통과하지 못하면 false 반환
+  - 빈 배열은 항상 true 반환
+
+  ```javascript
+  const arr = [1,2,3,4,5]
+  
+  const result = arr.every((elem)=> {
+      return elem % 2 === 0
+  })
+  // false
+  ```
+
+  
+
+`149p`
