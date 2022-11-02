@@ -837,4 +837,60 @@ console.log(typeof sub) // function
 
   
 
-`149p`
+---
+
+## 객체(Object)
+
+- 객체는 속성의 집합이며, 중괄호 내부에 key와 value의 쌍으로 표현
+- key
+  - 문자열 타입만 가능
+  - key 이름에 띄어쓰기 등의 구분자가 있으면 따옴표로 묶어서 표현
+- value
+  - 모든 타입(함수포함)가능
+- 객체 요소 접근
+  - 점(.) 또는 대괄호([])로 가능
+  - key 이름에 띄어쓰기 같은 구분자가 있으면 대괄호 접근만 가능
+
+```javascript
+    const me = {
+      name: 'jack',
+      pN: '01012345678',
+      'samsung products': {
+        buds: 'Galaxy Buds pro',
+        galaxy: 'Galaxy s99',
+      }
+    }
+
+    console.log(me.name);
+    console.log(me['name']);
+    console.log(me['samsung products']);
+    console.log(me['samsung products'].buds);
+```
+
+---
+
+## JSON
+
+- JavaScript Object Notation
+- Key-Value 형태로 이루어진 자료 표기법
+- JavaScript의 Object와 유사한 구조를 가지고 있지만 Object는 그 자체로 타입이고, JSON은 형식이 있는 `문자열`
+- 즉, JSON을 Object로 사용하기 위해서는 변환 작업이 필요
+
+```javascript
+const jsObject = {
+    coffee: 'Americano',
+    iceCream: 'Cookie and cream'
+}
+
+// Object -> JSON
+const objToJson = JSON.stringify(jsObject)
+
+console.log(objToJson) // {"coffee":"Americano", "iceCream":"Cookie and cream"}
+console.log(ytpeof objToJson) // string
+
+// JSON -> Object
+const jsonToObj = JSON.parse(objToJson)
+console.log(objToJson) // {"coffee":"Americano", "iceCream":"Cookie and cream"}
+console.log(ytpeof objToJson) // object
+```
+
