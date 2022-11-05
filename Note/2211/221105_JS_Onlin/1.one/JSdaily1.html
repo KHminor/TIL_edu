@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    
+    const stars = ['*','**','***','****','*****']
+    // stars.reverse()
+    //  stars.pop()
+    // console.log(stars.includes('*'));
+    // console.log(stars.indexOf('*****'));
+    // for (const star of stars) {
+    //   console.log(star);
+    // }
+    // console.log(stars.join('\n'));
+  
+    // 변수에 담아주는 형식으로 
+    starprint = function(star) {
+      console.log(star);
+    }
+    const a = [1,2,3]
+    // stars.forEach(starprint)
+
+
+    // map Array helper methods 는 
+    // 기존의 Array를 연산을 통해 새로운 Array를 만들도록 한다.
+    // 쉽게 생각하면 forEach + return 하는 것.
+
+    // const mapracdef = (num) => {
+    //   return num*5
+    // }
+    // const mapractice = a.map(mapracdef)
+    // console.log(mapractice);
+
+    // const numfilter = (num) => {
+    //   return num%2 === 1
+    // }
+
+    // const numfilter = a.filter((num) => num%2===1)
+    // console.log(numfilter);
+
+    // const sum = a.reduce((x,num) => num+x, 0)
+    // console.log(sum);
+
+    // console.log(a.reduce((num,sum) => num+sum,0));
+    // console.log(stars[stars.length-5]);
+    
+    // console.log(a.every((num) => {
+    //   return num%2===1
+    // }));
+
+    const bb = {
+      a:1,
+      b:2,
+      c:3
+    }
+    const {c} = bb
+    console.log(c);
+    // 함수 선언식
+    // function xx() {
+    //   console.log('나는 함수 선언식 응애');
+    // }
+
+    // // 함수 표현식
+    // const xxx = () => '나는 함수 표현식 응애'
+
+    // xx()
+    // const a = xxx()
+    // console.log(a);
+  </script>
+</body>
+</html>
