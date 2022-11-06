@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="follow-form" data-user-id="{{user.pk}}"></form>
+    
+    <script>
+        const form = document.querySelector('#follow-form')
+        form.addEventListener('submit', (event)=>{
+            event.preventDefault()
+
+            const userID = event.target.dataset.userId 
+            const csrftoken = document.querySelector('[name:csrfmiddlewaretoken]').value
+            axios.get({
+                url : `/accounts/${userId}/follow`,
+                header: {'X-CSRFToken': csrftoken}
+            })
+        })
+        
+    </script>
+</body>
+</html>
