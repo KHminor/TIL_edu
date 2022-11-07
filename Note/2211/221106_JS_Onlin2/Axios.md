@@ -365,7 +365,7 @@
     const form = document.querySelector('#follow-form')
     form.addEventListener('submit', (event)=> {
         event.preventDefault()
-        axios.get({
+        axios({
             method: 'post',
             url: `/accounts/${???}/follow`,
         })
@@ -398,7 +398,7 @@
          form.addEventListener('submit', (event) => {
              event.preventDefault()
              const userId = event.target.dataset.userId
-             axios.get({
+             axios({
                  method: 'post',
                  url: `/accounts/${userId}/follow`,
              })
@@ -471,7 +471,7 @@
      
                  const userID = event.target.dataset.userId 
                  const csrftoken = document.querySelector('[name:csrfmiddlewaretoken]').value
-                 axios.get({
+                 axios({
                      method: 'post',
                      url : `/accounts/${userId}/follow`,
                      header: {'X-CSRFToken': csrftoken}
@@ -527,7 +527,7 @@ XHR
 
             const userID = event.target.dataset.userId 
             const csrftoken = document.querySelector('[name:csrfmiddlewaretoken]').value
-            axios.get({
+            axios({
                 method: 'post',
                 url : `/accounts/${userId}/follow`,
                 header: {'X-CSRFToken': csrftoken}
