@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="알림창('아이디를 입력안하였어요💢')">💚</button>
+    <button onclick="알림창('비밀번호를 입력안하셨어요💢')">🧡</button>
+    <p
+      id="alert"
+      style="background-color: #aba8f4; color: #4646b4; display: inline"
+    ></p>
+
+    <script>
+      function 알림창(문구) {
+        document.getElementById("alert").innerText = 문구;
+      }
+    </script>
+  </body>
+</html>
