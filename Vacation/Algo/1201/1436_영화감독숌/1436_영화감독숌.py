@@ -1,31 +1,32 @@
+# 현태한테 도움 요청하기
+
 import sys
 
-n = int(sys.stdin.readline())
-cnt = chk = re_i = 0
-state = 'false'
-six = 0
-while cnt != n:
-    if chk % 10 != 6:
-        cnt += 1
-        chk += 1
-    else:
-        # 7부터 이상함
-        for i in range(10):
-            if cnt == n:
-                state = 'true'
-                re_i = i
-                break
-            elif i != 9:
+for i in range(1,501):
+    n = i
+    cnt = chk = re_i = 0
+    state = 'false'
+    six = 0
+    while cnt != n:
+        if chk % 10 != 6:
+            cnt += 1
+            chk += 1
+        else:
+            # 7부터 이상함
+            for i in range(10):
                 cnt += 1
-            elif i == 9:
-                cnt += 1
-                chk += 2
+
+                if cnt == n:
+                    state = 'true'
+                    re_i = i
+                    break
+                if i == 9:
+                    chk += 1
+        if state == 'true':
+            break
+
 
     if state == 'true':
-        break
-
-
-if state == 'true':
-    print(str(chk)+'66'+str(re_i))
-else:
-    print(str(chk-1)+'666')
+        print(n,(str(chk)+'66'+str(re_i)))
+    else:
+        print(n,(str(chk-1)+'666'))
