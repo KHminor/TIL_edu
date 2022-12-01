@@ -12,7 +12,6 @@ for i in range(1,501):
             cnt += 1
             chk += 1
         else:
-            # 7부터 이상함
             for i in range(10):
                 cnt += 1
 
