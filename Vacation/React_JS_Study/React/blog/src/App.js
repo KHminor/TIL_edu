@@ -81,7 +81,7 @@ function App() {
       {
         modal == true ? <Modal 선택글제목={선택글제목} 글수정버튼={글제목함수} color="skyblue" bgc={'yellow'} 글제목={글제목}  /> : null
       }
-
+      {/* <Modal2></Modal2> */}
     </div>
   );
 }
@@ -94,6 +94,29 @@ function Modal(props) {
       <p>상세내용</p>
     </div>
   );
+}
+
+
+
+class Modal2 extends React.Component {
+  constructor() {
+    super();
+    this.state= {
+      name: 'kim',
+      age: 20
+    }
+  }
+  render() {
+    return (
+      <div>
+        안녕 {this.state.name}
+        <button onClick={()=> {
+          this.setState({name:'hongmin'})
+        }}>버튼</button>
+      </div>
+      
+    )
+  }
 }
 
 export default App;
