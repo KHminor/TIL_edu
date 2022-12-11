@@ -108,7 +108,7 @@ table {
 .contain {
 	margin-top: 50px;
 	display: grid;
-	grid-template-columns: 289px 450px 450px 450px 289px ;
+	grid-template-columns: 289px 1fr 1fr 1fr 289px ;
 	justify-content: center;
 	text-align: center;
 }

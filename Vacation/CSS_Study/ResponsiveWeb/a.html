@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .container {
+    margin: 40px;
+    background-color: #00d2d3;
+    padding: 10px;
+    display: grid;
+    grid-gap: 8px;
+    grid-template-rows: 50px;
+    grid-auto-rows: 50px;
+  }
+  
+  .container:first-child {
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr))
+  }
+  
+  .container:last-child {
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr))
+  }
+  
+  .item {
+    background-color: #feca57;
+  }
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+  </div>
+  <div class="container">
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+  </div>
+</body>
+</html>
