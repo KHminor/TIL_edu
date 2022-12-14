@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    input[type='radio'] {
+      display: none;
+    }
+
+    input[type='radio'] + label {
+      /* text-align: center; */
+      display: inline-block;
+      padding: 20px;
+      background-color: #aaa;
+      color: #000;
+      cursor: pointer;
+    }
+
+    input[type='radio']:checked + label {
+      background-color: cadetblue;
+      transition: 1s;
+    }
+
+    .context {
+      width: 500px;
+      height: 600px;
+      background-color: #aaa;
+      columns: #000;
+      display: none;
+    }
+
+    input[id='btn1']:checked ~.content .btn1 {
+      display: block;
+    }
+    input[id='btn2']:checked ~.content .btn2 {
+      display: block;
+    }
+    input[id='btn3']:checked ~.content .btn3 {
+      display: block;
+    }
+
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  <div class="main">
+    <input type="radio" name="tabmenu" id="btn1" checked>
+    <label for="btn1">Btn1</label>
+    <input type="radio" name="tabmenu" id="btn2">
+    <label for="btn2">Btn2</label>
+    <input type="radio" name="tabmenu" id="btn3">
+    <label for="btn3">Btn3</label>
+
+    <div class="content">
+      <div class="context btn1">컨텐츠1</div>
+      <div class="context btn2">컨텐츠2</div>
+      <div class="context btn3">컨텐츠3</div>
+    </div>
+  </div>
+</body>
+</html>

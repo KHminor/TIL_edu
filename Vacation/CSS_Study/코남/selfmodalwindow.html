@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    input[id="modal"] {
+      display: none;
+    }
+
+    input[id="modal"] + label {
+      cursor: pointer;
+      display: inline-block;
+      padding: 20px;
+      background-color: rgb(169, 105, 228);
+      color: #fff;
+    }
+    
+    input[id="modal"] + label + div {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 100;
+    }
+
+    input[id="modal"] + label + div > div {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 500px;
+      height: 300px;
+      transform: translate(-50%,-50%);
+      background-color: #fff;
+      z-index: 2;
+    }
+
+    input[id="modal"] + label + div > div > label {
+      cursor: pointer;
+      position: absolute;
+      top: 0%;
+      right: 0%;
+      transform: translate(40%, -40%);
+      padding: 20px;
+      border-radius: 100%;
+      background-color: red;
+      z-index: 1;
+    }
+
+    input[id="modal"] + label + div > label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 1;
+    }
+
+    input[id="modal"] + label + div {
+      opacity: 0;
+      transition: all 0.5s;
+      visibility: hidden;
+    }
+
+    input[id="modal"]:checked + label + div {
+      opacity: 1;
+      visibility: visible;
+    }
+
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  <input type="checkbox" name="" id="modal">
+  <label for="modal">View</label>
+
+  <div>
+    <div>
+      <label for="modal"></label>
+
+    </div>
+    <label for="modal"></label>
+  </div>
+
+</body>
+</html>

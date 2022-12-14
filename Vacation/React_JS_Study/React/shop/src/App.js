@@ -5,7 +5,7 @@ import { items} from './data.js'
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
 import comp from './newcomponent'
 import {Navbar,Nav} from 'react-bootstrap';
-
+import Detail from './Detail'
 
 function App() {
 
@@ -32,7 +32,7 @@ function App() {
           <Nav style={{color:'black',justifyContent: 'center',alignItems: 'center' }}  href="#pricing"><span class="material-symbols-outlined">shopping_cart_checkout</span></Nav>
         </div>
       </Navbar>
-      
+
       {/* <Link style={{textDecoration: 'none', color:'black'}} to={'/'}>홈 </Link><br />
       <Link to={'/detail'}>상세페이지</Link><br />
       <Link to={'/comp'}>새로운 컴포넌트</Link> */}
@@ -42,17 +42,12 @@ function App() {
         <div className='main-bg'>
         {/* 배경사진 */}
         </div></>} />
-
-        <Route path='/detail' element={<>
-          <div className='contain'>
-            <div></div>
-            {item.map((item) => {
-              return item})}
-            <div></div>
-          </div></>}/>
+          
+        <Route path='/detail/:id'  element={<Detail />}/>
         <Route path='/comp' element={<>
           {comp}
         </>}/>
+
           <Route path='event' element={<> <Event /></>}>
             <Route path='one' element={<><p>첫 주문시 양배추즙 서비스</p></>}/>
             <Route path='two' element={<><p>생일기념 쿠폰받기</p></>}/>
@@ -60,7 +55,8 @@ function App() {
 
         <Route path='*' element={<>여긴 뭐하러 왔어?</>}/>
       </Routes>
-
+      
+      {/* <Items item={item} /> */}
     </div>
   );
 }
@@ -74,5 +70,15 @@ function Event() {
   )
 }
 
+function Items(props) {
+  return (
+    <div className='contain'>
+      <div></div>
+      {props.item.map((item) => {
+        return item})}
+      <div></div>
+    </div>
+  )
+}
 
 export default App;
