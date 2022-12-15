@@ -1,7 +1,7 @@
 import './App.css';
 import React ,{useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { items} from './data.js'
+import { items, datas} from './data.js'
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
 import comp from './newcomponent'
 import {Navbar,Nav} from 'react-bootstrap';
@@ -10,6 +10,7 @@ import Detail from './Detail'
 function App() {
 
   let [item, setItems] = useState(items)
+  let [data, setDatas] = useState(datas)
   let navigate = useNavigate()
 
   return (
@@ -43,7 +44,7 @@ function App() {
         {/* 배경사진 */}
         </div></>} />
           
-        <Route path='/detail/:id'  element={<Detail />}/>
+        <Route path='/detail/:id'  element={<Detail datas={datas}/>}/>
         <Route path='/comp' element={<>
           {comp}
         </>}/>
@@ -55,8 +56,16 @@ function App() {
 
         <Route path='*' element={<>여긴 뭐하러 왔어?</>}/>
       </Routes>
-      
-      {/* <Items item={item} /> */}
+      <button onClick={() => {
+        let newitem = [...item]
+        console.log(newitem);
+        newitem.reverse()
+        console.log(newitem);
+        setItems(newitem)
+      }}>
+        반전 버튼
+      </button>
+      <Items item={item} />
     </div>
   );
 }

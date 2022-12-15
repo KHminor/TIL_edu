@@ -4,13 +4,20 @@ import {datas} from './data'
 function Detail(props) {
 
   let {id} = useParams()
-  
+
+  let data = props.datas.find((data)=> {
+    console.log(data);
+    return data.id === Number(id)
+  })
+
+  let dataId = data.id+1
+
   return (
-    <div className="contain">
+    <div style={{display:'flex', justifyContent:'center',alignItems:'center'}}>
       <div style={{marginRight:'4px'}}>
-        <img className='items' src="https://images.pexels.com/photos/4602025/pexels-photo-4602025.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="" />
-        <p style={{marginTop:'7px'}}>{datas[id].title}</p>
-        <p>{datas[id].content}</p>
+        <img className='items' style={{height:'50%'}} src={'https://codingapple1.github.io/shop/shoes' + dataId +'.jpg'} alt="" />
+        <p style={{marginTop:'7px'}}>{datas[data.id].title}</p>
+        <p>{datas[data.id].content}</p>
       </div>
     </div>
   )

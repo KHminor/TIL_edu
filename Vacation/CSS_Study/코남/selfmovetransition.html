@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+    }
+    button {
+      border-radius: 4px;
+      background-color: orange;
+      border: none;
+      padding: 20px;
+      width: 10rem;
+      text-align: center;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.5s;
+    }
+
+    .button > span {
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      top: 0;
+      transition: 0.5s;
+    }
+
+    .button > span::after {
+      content: '\00bb';
+      position: absolute;
+      right: -20px;
+      transition: 0.5s;
+      opacity: 0;
+    }
+
+    .button:hover > span{
+      padding-right: 25px;
+    }
+
+    .button:hover > span::after {
+      opacity: 1;
+      right: 0;
+    }
+
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  <button class="button">
+    <span>
+      Hover
+    </span>
+  </button>
+</body>
+</html>

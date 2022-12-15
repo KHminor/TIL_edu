@@ -23,17 +23,17 @@ let datas = [
 
 let items = [
   <div style={{marginRight:'4px'}}>
-    <img className='items' src="https://images.pexels.com/photos/4602025/pexels-photo-4602025.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="" />
+    <img className='items' style={{height:'70%'}} src="https://codingapple1.github.io/shop/shoes1.jpg" alt="" />
     <p style={{marginTop:'7px'}}>{datas[0].title}</p>
     <p>{datas[0].content}</p>
   </div>,
   <div style={{marginRight:'4px', marginLeft:'2px'}}>
-    <img className='items' src="https://images.pexels.com/photos/4276653/pexels-photo-4276653.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="" />
+    <img className='items' style={{height:'70%'}} src="https://codingapple1.github.io/shop/shoes2.jpg" alt="" />
     <p style={{marginTop:'7px'}}>{datas[1].title}</p>
     <p>{datas[1].content}</p>
   </div>,
   <div style={{marginLeft:'4px'}}>
-    <img className='items' src="https://images.pexels.com/photos/4061385/pexels-photo-4061385.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="" />
+    <img className='items' style={{height:'70%'}} src="https://codingapple1.github.io/shop/shoes3.jpg" alt="" />
     <p style={{marginTop:'7px'}}>{datas[2].title}</p>
     <p>{datas[2].content}</p>
   </div>
