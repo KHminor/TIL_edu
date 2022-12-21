@@ -6,12 +6,17 @@ import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
 import comp from './newcomponent'
 import {Navbar,Nav} from 'react-bootstrap';
 import Detail from './Detail'
+import axios from 'axios'
+import Cart from './routes/Cart'
 
 function App() {
 
   let [item, setItems] = useState(items)
   let [data, setDatas] = useState(datas)
   let navigate = useNavigate()
+  let [axiosData,setaxiosData] = useState()
+  let [btnClick,setBtnClick] = useState(0)
+  let [loading,setLoading] = useState(false)
 
   return (
     <div className="App">
@@ -42,30 +47,62 @@ function App() {
         <Route path='/' element={<>
         <div className='main-bg'>
         {/* 배경사진 */}
-        </div></>} />
+        </div>
+        <div>
+          <button onClick={()=> { 
+            setLoading(true)
+            let urlNum = 2 + btnClick
+            console.log(urlNum);
+            axios.get('https://codingapple1.github.io/shop/data' + urlNum + '.json')
+            .then((d)=> {
+              setLoading(false)
+              setBtnClick(btnClick+1)
+              let newData = [...data,...d.data]
+              console.log(newData);
+              setDatas(newData)
+            })
+            .catch((error)=> {
+              alert('상품이 더이상 없습니다(❁´◡`❁)')
+              console.log(error)
+            })
+          }}>버튼</button>
+        </div>
+        </>} />
           
         <Route path='/detail/:id'  element={<Detail datas={datas}/>}/>
         <Route path='/comp' element={<>
           {comp}
         </>}/>
 
-          <Route path='event' element={<> <Event /></>}>
-            <Route path='one' element={<><p>첫 주문시 양배추즙 서비스</p></>}/>
-            <Route path='two' element={<><p>생일기념 쿠폰받기</p></>}/>
-          </Route>
+        <Route path='event' element={<> <Event /></>}>
+          <Route path='one' element={<><p>첫 주문시 양배추즙 서비스</p></>}/>
+          <Route path='two' element={<><p>생일기념 쿠폰받기</p></>}/>
+        </Route>
 
+        <Route path='/cart' element={<>< Cart /></>}>
+
+        </Route>
+        
         <Route path='*' element={<>여긴 뭐하러 왔어?</>}/>
       </Routes>
       <button onClick={() => {
         let newitem = [...item]
-        console.log(newitem);
         newitem.reverse()
-        console.log(newitem);
         setItems(newitem)
       }}>
         반전 버튼
       </button>
-      <Items item={item} />
+
+      <div>
+        {
+          loading === true? <Loding /> : null
+        }
+      </div>
+      
+      <div style={{display:'grid', gridTemplateColumns:'1fr 1fr 1fr'}}>
+        {data.map((data)=> (<Datas data={data} />))}
+      </div>
+      
     </div>
   );
 }
@@ -79,13 +116,25 @@ function Event() {
   )
 }
 
-function Items(props) {
+function Datas(props) {
+  // console.log(props);
+  let dataId = props.data.id+1
   return (
-    <div className='contain'>
-      <div></div>
-      {props.item.map((item) => {
-        return item})}
-      <div></div>
+    <div style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+      <div style={{marginRight:'4px'}}>
+        <img className='items' style={{height:'50%'}} src={'https://codingapple1.github.io/shop/shoes' + dataId +'.jpg'} alt="" />
+        <p style={{marginTop:'7px'}}>{props.data.title}</p>
+        <p>{props.data.content}</p>
+        <p>{props.data.price}</p>
+      </div>
+    </div>
+  )
+}
+
+function Loding() {
+  return (
+    <div style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+      <img src="https://mblogthumb-phinf.pstatic.net/MjAyMDExMTJfMTgg/MDAxNjA1MTkxMjUwMzk4.BW7kx0zOQyxI57lwIxcYu40P1uicXhVNXQRSGegLuugg.RLMpOQkNfd72xWh8CJFLQz4ZwyGuZmWrDSdH8dfzArUg.GIF.bom____bom/90s_gif_(17).gif?type=w800" alt="" />
     </div>
   )
 }
