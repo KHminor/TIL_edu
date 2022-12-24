@@ -31,11 +31,11 @@ function App() {
           <div></div>
           <Nav className='mainfont' style={{color:'black',justifyContent: 'center',alignItems: 'center', fontSize:'2rem', letterSpacing:'5px', cursor: 'pointer' }} onClick={()=> {navigate('/')}}>LOUIS VUITTON</Nav>
           <div></div>
-          <Nav style={{color:'black',justifyContent: 'center',alignItems: 'center', cursor: 'pointer' }}  onClick={()=> {navigate('/detail')}} >위시리스트</Nav>
+          <Nav style={{color:'black',justifyContent: 'center',alignItems: 'center', cursor: 'pointer' }}  onClick={()=> {navigate('/about')}} >위시리스트</Nav>
           <div></div>
-          <Nav style={{color:'black',justifyContent: 'center',alignItems: 'center', cursor: 'pointer' }}  onClick={()=>{navigate('/about')}}>My lv</Nav>
+          <Nav style={{color:'black',justifyContent: 'center',alignItems: 'center', cursor: 'pointer' }}  onClick={()=>{navigate('/detail')}}>My lv</Nav>
           <div></div>
-          <Nav style={{color:'black',justifyContent: 'center',alignItems: 'center' }}  href="#pricing"><span class="material-symbols-outlined">shopping_cart_checkout</span></Nav>
+          <Nav style={{color:'black',justifyContent: 'center',alignItems: 'center', cursor: 'pointer' }}  href="#pricing" onClick={()=>{navigate('/cart')}}><span class="material-symbols-outlined" >shopping_cart_checkout</span></Nav>
         </div>
       </Navbar>
 

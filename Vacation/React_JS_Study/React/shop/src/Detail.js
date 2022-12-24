@@ -2,9 +2,11 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import {datas} from './data'
 import Nav from 'react-bootstrap/Nav';
+import { useDispatch } from "react-redux";
+import { addCartData } from "./store";
 
 function Detail(props) {
-
+  let dispatch = useDispatch()
   let [alertcheck, setAlert] = useState(true) 
   let [inText,setInText] = useState(0)
   let [탭, 탭변경] = useState(0)
@@ -51,14 +53,23 @@ function Detail(props) {
         : null
       }
       <div style={{marginRight:'4px', display:'flex', justifyContent:'center',alignItems:'center'}}>
-        <img className='items' style={{height:'50%'}} src={'https://codingapple1.github.io/shop/shoes' + dataId +'.jpg'} alt="" />
         <div>
-          <input onKeyDown={(e)=> {
-            setInText(e.target.value);
-          }} type="text" />
-        </div>
-        <p style={{marginTop:'7px'}}>{datas[data.id].title}</p>
-        <p>{datas[data.id].content}</p>
+          <img className='items' style={{height:'50%'}} src={'https://codingapple1.github.io/shop/shoes' + dataId +'.jpg'} alt="" />
+          {/* <div>
+            <input onKeyDown={(e)=> {
+              setInText(e.target.value);
+            }} type="text" />
+          </div> */}
+          <p style={{marginTop:'7px'}}>{datas[data.id].title}</p>
+          <p>{datas[data.id].content}</p>
+          <div>
+            <button onClick={()=> {
+              // console.log(data);
+              dispatch(addCartData(data))
+              // dispatch(addCartData({id : 3, name : 'Test', count : 1}))
+            }}>주문하기</button>
+          </div>
+        </div>  
       </div>
 
       <div style={{display:'grid', gridTemplateColumns:'1fr'}}>
