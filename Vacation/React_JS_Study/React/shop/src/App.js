@@ -1,5 +1,5 @@
 import './App.css';
-import React ,{useState} from 'react';
+import React ,{useEffect, useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { items, datas} from './data.js'
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
@@ -10,6 +10,21 @@ import axios from 'axios'
 import Cart from './routes/Cart'
 
 function App() {
+
+  // // local Storage에 array 또는 object 저장해보기 (JSON 형태)
+  // let obj = {name: 'kim'}
+  // localStorage.setItem('data', JSON.stringify(obj))
+
+  // //저장된 데이터를 꺼내보기
+  // let d = localStorage.getItem('data')
+  // console.log(d);
+
+  // // 저장된 데이터를 JSON-> array/object로 변환 후 출력
+  // console.log(JSON.parse(d));
+  // console.log(JSON.parse(d).name);
+  useEffect(()=> {
+    localStorage.setItem('watched',JSON.stringify([]))
+  },[])
 
   let [item, setItems] = useState(items)
   let [data, setDatas] = useState(datas)
@@ -22,20 +37,23 @@ function App() {
     <div className="App">
 
       {/* navbar */}
-      <Navbar id='navbar' variant="dark">
-        <div className="grid subfont">
-          <div className=''></div>
-          <Nav style={{color:'black',justifyContent: 'center',alignItems: 'center' }} href="#home"><span class="material-symbols-outlined" style={{marginRight:'3px'}}>menu</span>메뉴</Nav>
+      <Navbar id='navbar' variant="dark" >
+        {/* <div className="subfont"> */}
+        <div className='grid'>
+          <div></div>
+          <div><Nav style={{color:'black',justifyContent: 'center',alignItems: 'center' }} href="#home"><span class="material-symbols-outlined" style={{marginRight:'3px'}}>menu</span>메뉴</Nav></div>
           <div></div>
           <Nav style={{color:'black',justifyContent: 'center',alignItems: 'center' }}  href="#features"><span class="material-symbols-outlined">search</span>검색</Nav>
           <div></div>
           <Nav className='mainfont' style={{color:'black',justifyContent: 'center',alignItems: 'center', fontSize:'2rem', letterSpacing:'5px', cursor: 'pointer' }} onClick={()=> {navigate('/')}}>LOUIS VUITTON</Nav>
           <div></div>
-          <Nav style={{color:'black',justifyContent: 'center',alignItems: 'center', cursor: 'pointer' }}  onClick={()=> {navigate('/about')}} >위시리스트</Nav>
+          <Nav style={{color:'black',justifyContent: 'center',alignItems: 'center', cursor: 'pointer' }}  onClick={()=> {navigate('/detail/0')}} >위시리스트</Nav>
           <div></div>
-          <Nav style={{color:'black',justifyContent: 'center',alignItems: 'center', cursor: 'pointer' }}  onClick={()=>{navigate('/detail')}}>My lv</Nav>
+          <Nav style={{color:'black',justifyContent: 'center',alignItems: 'center', cursor: 'pointer' }}  onClick={()=>{navigate('/detail/1')}}>My lv</Nav>
           <div></div>
           <Nav style={{color:'black',justifyContent: 'center',alignItems: 'center', cursor: 'pointer' }}  href="#pricing" onClick={()=>{navigate('/cart')}}><span class="material-symbols-outlined" >shopping_cart_checkout</span></Nav>
+          <div></div>
+        {/* </div> */}
         </div>
       </Navbar>
 

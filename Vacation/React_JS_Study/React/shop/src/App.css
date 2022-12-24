@@ -81,6 +81,12 @@ table {
 
 /* css */
 
+
+body {
+	width: 100vw;
+	height: 100vh;
+}
+
 .mainfont {
 	font-family: 'EliceDigitalBaeum_Bold';
 
@@ -92,9 +98,11 @@ table {
 
 .grid {
 	margin-top: 20px;
+	width: 100%;
 	font-size: 15px;
 	display: grid;
-	grid-template-columns: 50px 55px 20px 55px 435px 690px 345px 105px 20px 53px 20px 22px 50px;
+	grid-template-columns: 0.5fr 0.5fr 0.2fr 0.5fr 4.1fr 5fr 3.4fr 0.8fr 0.3fr 0.5fr 0.2fr 0.3fr 0.5fr ;
+	/* grid-template-columns: repeat(5,1fr) 4fr repeat(5,1fr); */
 }
 
 

@@ -2,7 +2,6 @@ import {Table} from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { upAge } from '../store/userSlice';
 import { changeCartData, deleteData } from '../store'
-import { useEffect } from 'react';
 
 
 function Cart() {
@@ -11,11 +10,6 @@ function Cart() {
   let user = useSelector((state)=> { return state.user })
   let cartData = useSelector((state)=> { return state.cartData })
 
-  // useEffect(()=> {
-  //   // alert('추가되었습니다')
-  // },[cartData])
-
-  // console.log(cartData);
   return (
     <div>
       <h6>{user.name} 장바구니 ({user.age}살)</h6>

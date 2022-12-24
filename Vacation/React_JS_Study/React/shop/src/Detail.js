@@ -2,8 +2,8 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import {datas} from './data'
 import Nav from 'react-bootstrap/Nav';
-import { useDispatch } from "react-redux";
-import { addCartData } from "./store";
+import { useDispatch, useSelector } from "react-redux";
+import { addCartData, changeWatch } from "./store";
 
 function Detail(props) {
   let dispatch = useDispatch()
@@ -11,7 +11,20 @@ function Detail(props) {
   let [inText,setInText] = useState(0)
   let [탭, 탭변경] = useState(0)
   let [fade,setFade] = useState('')
+  let {id} = useParams()
+  let [num, setNum] = useState(0)
+  let data = props.datas.find((data)=> {
+    return data.id === Number(id)
+  })
+  let dataId = data.id+1
 
+  dispatch(changeWatch(data.id))
+  let watchedData = useSelector((state)=> {return state.watch})
+    console.log(watchedData);
+  
+  
+  // localStorage.setItem('watched',)
+  
   useEffect(()=> {
     setTimeout(() => {
       setAlert(false)}, 2000);
@@ -34,14 +47,10 @@ function Detail(props) {
     }
   }, [탭])
 
-  let {id} = useParams()
-  let [num, setNum] = useState(0)
-  let data = props.datas.find((data)=> {
-    // console.log(data);
-    return data.id === Number(id)
+  useEffect(()=> {
+    // dispatch(changeWatch(data.id))
+    
   })
-
-  let dataId = data.id+1
 
   return (
     <div className={"start" + fade}>

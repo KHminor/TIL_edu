@@ -1,6 +1,17 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit'
 import user from './store/userSlice'
 
+let watch = createSlice({
+  name: 'watch',
+  initialState: {'watched':[]},
+  reducers: {
+    changeWatch(state,action) {
+      console.log(action.payload);
+      
+    }
+  }
+})
+export let {changeWatch} = watch.actions
 
 let stock = createSlice({
   name: 'stock',
@@ -55,5 +66,6 @@ export default configureStore({
     user: user.reducer,
     stock: stock.reducer,
     cartData: cartData.reducer,
+    watch: watch.reducer,
   }
 }) 
