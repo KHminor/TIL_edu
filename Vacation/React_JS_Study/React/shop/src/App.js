@@ -8,6 +8,7 @@ import {Navbar,Nav} from 'react-bootstrap';
 import Detail from './Detail'
 import axios from 'axios'
 import Cart from './routes/Cart'
+import { useQuery } from '@tanstack/react-query';
 
 function App() {
 
@@ -22,8 +23,12 @@ function App() {
   // // 저장된 데이터를 JSON-> array/object로 변환 후 출력
   // console.log(JSON.parse(d));
   // console.log(JSON.parse(d).name);
+  
   useEffect(()=> {
-    localStorage.setItem('watched',JSON.stringify([]))
+    let checkLocal = localStorage.getItem('watched')
+    if (!(JSON.parse(checkLocal))) {
+      localStorage.setItem('watched',JSON.stringify([]))  
+    }
   },[])
 
   let [item, setItems] = useState(items)
@@ -33,6 +38,24 @@ function App() {
   let [btnClick,setBtnClick] = useState(0)
   let [loading,setLoading] = useState(false)
 
+  let result = useQuery(['작명'],()=> {
+    return axios({
+      url: 'https://codingapple1.github.io/userdata.json'
+    })
+    .then((a)=> {
+      console.log('요청됨');
+      return a.data
+    })
+    .catch((e)=> {
+      return e
+    })
+    
+  }, {staleTime: 2000})
+
+  // console.log(result.data);
+  // console.log(result.isFetching);
+  // console.log(result.error);
+
   return (
     <div className="App">
 
@@ -41,7 +64,7 @@ function App() {
         {/* <div className="subfont"> */}
         <div className='grid'>
           <div></div>
-          <div><Nav style={{color:'black',justifyContent: 'center',alignItems: 'center' }} href="#home"><span class="material-symbols-outlined" style={{marginRight:'3px'}}>menu</span>메뉴</Nav></div>
+          <Nav style={{color:'black',justifyContent: 'center',alignItems: 'center' }} href="#home"><span class="material-symbols-outlined" style={{marginRight:'3px'}}>menu</span>메뉴</Nav>
           <div></div>
           <Nav style={{color:'black',justifyContent: 'center',alignItems: 'center' }}  href="#features"><span class="material-symbols-outlined">search</span>검색</Nav>
           <div></div>
@@ -56,7 +79,7 @@ function App() {
         {/* </div> */}
         </div>
       </Navbar>
-
+      <Nav className='ms-auto'>{ result.isLoading ? '로딩중...' : result.data.name}</Nav>
       {/* <Link style={{textDecoration: 'none', color:'black'}} to={'/'}>홈 </Link><br />
       <Link to={'/detail'}>상세페이지</Link><br />
       <Link to={'/comp'}>새로운 컴포넌트</Link> */}
@@ -103,13 +126,6 @@ function App() {
         
         <Route path='*' element={<>여긴 뭐하러 왔어?</>}/>
       </Routes>
-      <button onClick={() => {
-        let newitem = [...item]
-        newitem.reverse()
-        setItems(newitem)
-      }}>
-        반전 버튼
-      </button>
 
       <div>
         {

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 import {datas} from './data'
 import Nav from 'react-bootstrap/Nav';
 import { useDispatch, useSelector } from "react-redux";
-import { addCartData, changeWatch } from "./store";
+import { addCartData } from "./store";
 
 function Detail(props) {
   let dispatch = useDispatch()
@@ -18,9 +18,6 @@ function Detail(props) {
   })
   let dataId = data.id+1
 
-  dispatch(changeWatch(data.id))
-  let watchedData = useSelector((state)=> {return state.watch})
-    console.log(watchedData);
   
   
   // localStorage.setItem('watched',)
@@ -47,10 +44,15 @@ function Detail(props) {
     }
   }, [탭])
 
-  useEffect(()=> {
-    // dispatch(changeWatch(data.id))
-    
-  })
+  useEffect(()=> { 
+    let 꺼낸거 = localStorage.getItem('watched')
+    꺼낸거 = JSON.parse(꺼낸거)
+    꺼낸거.push(data.id)
+    꺼낸거 = new Set(꺼낸거)
+    꺼낸거 = Array.from(꺼낸거)
+    localStorage.setItem('watched',JSON.stringify(꺼낸거))
+    console.log(localStorage.getItem('watched'));
+  },[])
 
   return (
     <div className={"start" + fade}>
