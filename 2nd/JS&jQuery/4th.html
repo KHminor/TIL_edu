@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="main.css">
+  <title>Document</title>
+</head>
+<body>
+  <div id="alert" class="alert-box">알림창임 
+    <button onclick="알림창('none')">닫기</button>
+  </div>
+  <button onclick="알림창('block')">버튼</button>
+  <button id="btn" onclick="plus(1)">1</button>
+
+  <script>
+    function 알림창(params) {
+      document.getElementById('alert').style.display = params
+    }
+
+    function plus(params) {
+      let num = document.getElementById('btn')
+      numNumber = num.innerText
+      numNumber = Number(numNumber)
+      num.innerText = numNumber+params
+    }
+  </script>
+</body>
+</html>
