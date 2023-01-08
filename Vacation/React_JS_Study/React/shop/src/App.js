@@ -31,9 +31,9 @@ function App() {
     }
   },[])
 
+  let navigate = useNavigate()
   let [item, setItems] = useState(items)
   let [data, setDatas] = useState(datas)
-  let navigate = useNavigate()
   let [axiosData,setaxiosData] = useState()
   let [btnClick,setBtnClick] = useState(0)
   let [loading,setLoading] = useState(false)
@@ -134,7 +134,13 @@ function App() {
       </div>
       
       <div style={{display:'grid', gridTemplateColumns:'1fr 1fr 1fr'}}>
-        {data.map((data)=> (<Datas data={data} />))}
+        {data.map((data)=> {
+          return (
+            <div onClick={()=> {navigate(`/detail/${data.id}`)}}>
+              <Datas data={data} />
+            </div>  
+          )
+        })}
       </div>
       
     </div>

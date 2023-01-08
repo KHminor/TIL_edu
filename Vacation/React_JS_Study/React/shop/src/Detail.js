@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import {datas} from './data'
 import Nav from 'react-bootstrap/Nav';
 import { useDispatch, useSelector } from "react-redux";
 import { addCartData } from "./store";
 
 function Detail(props) {
+  let navigate = useNavigate()
   let dispatch = useDispatch()
   let [alertcheck, setAlert] = useState(true) 
   let [inText,setInText] = useState(0)
