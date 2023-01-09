@@ -10,7 +10,7 @@
 <body>
   <div class="alert-box" id="alert">
     <p id="pId">알림창임</p>
-    <button onclick="알림창열기('none')">닫기</button>
+    <button id="bnt">닫기</button>
   </div>
 
   <button onclick="알림창열기('block','아이디를 입력하세요')">버튼1</button>
@@ -18,10 +18,15 @@
 
   <script>
 
+    document.getElementById('bnt').addEventListener('click', (e)=> {
+      document.getElementById('alert').style.display = 'none'
+    })
+
     function 알림창열기(p1,p2) {
       document.getElementById('alert').style.display = p1
       document.getElementById('pId').innerText = p2
     }
+
   </script>
 </body>
 </html>
