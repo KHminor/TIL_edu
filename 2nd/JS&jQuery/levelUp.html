@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body>
+  <!-- jQuery 설치 -->
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <!-- bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+  </script>
+  <script>
+    // 1번 문제
+    // function 삼육구게임(x) {
+    //   //빨리 이 함수를 디자인해봅시다. 
+    //   if (x % 3) {
+    //     console.log('통과');
+    //   } else {
+    //     console.log('박수');
+    //   }
+    // }
+    // 삼육구게임(3)
+    // 삼육구게임(6)
+    // 삼육구게임(11)
+    // 삼육구게임(15)
+
+    // 2번 문제
+    // function 삼육구게임(x) {
+    //   //빨리 이 함수를 디자인해봅시다. 
+    //   if (x % 3) {
+    //     console.log('통과');
+    //   } else if (!(x % 9)) {
+    //     console.log('박수x2');
+    //   } else {
+    //     console.log('박수');
+    //   }
+    // }
+    // 삼육구게임(3)
+    // 삼육구게임(6)
+    // 삼육구게임(11)
+    // 삼육구게임(18)
+
+    // 3번 문제
+    // function 합격했냐(x, y) {
+    //   //코드 짜면 됩니다
+    //   if ((x < 40 || y < 40) || (x + y < 120)) {
+    //     console.log('불합격');
+    //   } else if (x + y >= 120) {
+    //     console.log('합격');
+    //   }
+    // }
+
+    // 합격했냐(70, 70)
+    // 합격했냐(30, 100)
+    // 합격했냐(50, 50)
+
+    // 응용 1
+    // function 삼육구게임(x) {
+    //   //빨리 이 함수를 디자인해봅시다. 
+    //   if ((x % 10 === 3) || (x % 10 === 6) || (x % 10 === 9)) {
+    //     console.log('박수');
+    //   } else {
+    //     console.log('통과');
+    //   }
+    // }
+    // 삼육구게임(13)
+    // 삼육구게임(16)
+    // 삼육구게임(229)
+    // 삼육구게임(220)
+
+    // 응용 2
+    function 합격했냐(x, y) {
+      //코드 짜면 됩니다
+      if ((x < 40 || y < 40) || (x + y < 120)) {
+        alert('불합격😥')
+        console.log('불합격');
+      } else if ((x || y) < 0 || (x || y) > 100) {
+        alert('장난치지 마소😶')
+      } else {
+        alert('합격😀')
+        console.log('합격');
+      }
+    }
+
+    합격했냐(70, 70)
+    합격했냐(30, 100)
+    합격했냐(50, 50)
+    합격했냐(-1, 50)
+    합격했냐(1, 150)
+    합격했냐(120, 150)
+    합격했냐(150, 120)
+  </script>
+</body>
+
+</html>
