@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <link rel="stylesheet" href="test4.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="rouletter">
+      <div class="rouletter-bg">
+        <div class="rouletter-wacu"></div>
+      </div>
+      <div class="rouletter-arrow"></div>
+      <button class="rouletter-btn">Click</button>
+    </div>
+    <script>
+      let deg = 0
+      var rouletter = {
+        // 부여할 숫자 랜덤으로 하기
+        random: function () {
+          min = Math.ceil(0);
+          max = Math.floor(5);
+          return Math.floor(Math.random() * (max - min)) + min;
+        },
+        // start 버튼
+        start: function () {
+          // console.log(deg);
+          var btn = document.querySelector(".rouletter-btn");
+          var panel = document.querySelector(".rouletter-wacu");
+          
+          panel.classList.add("on");
+          deg += (_.random(0,365)*10)+3600
+          panel.style.transform = `rotate(${deg}deg)`
+          console.log(panel.style.transform);
+          // btn.innerText = "stop";
+          // setTimeout(() => {
+          //   panel.classList.remove("on");
+          // }, 5000);
+        },
+      };
+
+      document.addEventListener("click", function (e) {
+        var target = e.target;
+        rouletter.start()
+        // console.log(deg);
+        // btn.innerText = 
+        // if (target.tagName === "BUTTON") {
+        //   rouletter.start()
+        // }
+      });
+    </script>
+  </body>
+</html>

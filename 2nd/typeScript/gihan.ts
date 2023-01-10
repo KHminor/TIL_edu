@@ -1,0 +1,1 @@
+let 기한이는바보 :(number|string)[] = ['rl',1,'bsdfsdf','123']
