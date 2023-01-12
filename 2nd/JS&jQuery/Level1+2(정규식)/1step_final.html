@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <p>태조 이성계가 태어난 년도는?</p>
+    <input type="text" id="answer" />
+    <button id="send-answer">제출</button>
+
+    <!-- jQuery 설치 -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.3.min.js"
+      integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+      crossorigin="anonymous"
+    ></script>
+    <!-- bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      // let 나이 = 30
+      // const 출신지역 = '울산'
+
+      // // Q3. 이자율 계산하기
+      // let 예금액 = 10000
+      // let 미래예금액 = 0
+
+      // if (예금액 < 50000) {
+      //   미래예금액 =  예금액*1.15*1.15
+      // } else {
+      //   미래예금액 =  예금액*1.2*1.2
+      // }
+      // console.log(미래예금액);
+
+      // // Q4 . 커피 리필
+      // let first = 360
+      // let result = first + (first*2/3) + (first*2/3)*2/3
+      // console.log(result);
+
+      // Q5. 간단한 퀴즈 UI
+      let cnt = 0
+      $('#send-answer').on('click', ()=> {
+        if (cnt < 4 && $('#answer').val() === '1335') {
+          cnt = 0
+          alert('성공')
+        } else if ($('#answer').val() !== '1335'){
+          cnt += 1
+          console.log(cnt);
+          alert('떙')
+        } else {
+          alert('멍청아')
+        }
+      })
+    </script>
+  </body>
+</html>

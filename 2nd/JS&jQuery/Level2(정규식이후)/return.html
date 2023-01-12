@@ -1,0 +1,16 @@
+<script>
+  function 함수(분,초) {
+    let result = (분*60000)+(초*1000)
+    return result
+  }
+  console.log(함수(1,30));
+  console.log(함수(2,10));
+
+  function 할인가(가격,첫구매했니) {
+    let 첫구매 = parseFloat((가격*0.9-1.5).toFixed(2))
+    let 그냥구매 = parseFloat((가격*0.9).toFixed(2))
+    return 첫구매했니 === true ? 첫구매 : 그냥구매
+  } 
+  console.log(할인가(70,false));
+  console.log(할인가(10,true));
+</script>
