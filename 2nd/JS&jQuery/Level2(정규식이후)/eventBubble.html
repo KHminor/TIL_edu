@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <style>
+      .black-bg {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 6;
+        padding: 30px;
+        /* visibility: hidden; */
+        /* opacity: 0; */
+        transition: all 1s;
+      }
+
+      .white-bg {
+        background: white;
+        border-radius: 5px;
+        padding: 30px;
+      }
+
+      .slide-container {
+        width: 300vw;
+        /* 왼쪽으로 이동시킬 때 margin-left 보다 효율(효율)적인 코드는 */
+        /* margin-left: -100vw; */
+        transition: all 1s;
+        /* transform: translateX(-100vw); */
+      }
+
+      .slide-box {
+        width: 100vw;
+        float: left;
+      }
+
+      .slide-box img {
+        width: 100%;
+      }
+
+      .navbar {
+        position: fixed;
+        width: 100%;
+        z-index: 5;
+      }
+
+      .navbar-brand {
+        font-size: 20px;
+        transition: all 0.5s;
+      }
+
+      #test-btn {
+        /* margin-top: 4rem; */
+      }
+
+      #width-scroll{
+        margin-top: 3.1rem;
+        position: absolute;
+        background-color: black;
+        height: 1vh;
+        /* width: 1vw; */
+        transition: all 0.5s;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-light bg-light">
+      
+      <div class="container-fluid">
+        <span class="navbar-brand">JSShop</span>
+        <span class="badge bg-dark" style="cursor: pointer">Dark 🔄</span>
+        <button id="test-btn">로그인</button>
+        <button class="navbar-toggler" type="button">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div id="width-scroll"></div>
+    </nav>
+
+    <ul class="list-group d-none">
+      <li class="list-group-item">An item</li>
+      <li class="list-group-item">A second item</li>
+      <li class="list-group-item">A third item</li>
+      <li class="list-group-item">A fourth item</li>
+      <li class="list-group-item">And a fifth one</li>
+    </ul>
+
+
+      
+    
+
+
+    
+    <div id="login" class="black-bg d-none">
+      <div class="white-bg">
+        <h4>로그인하세요</h4>
+        <div id="alert" style="color: red; font-size: 0.8rem">
+          조건에 맞지 않습니다.
+        </div>
+        <form action="success.html">
+          <div class="my-3">
+            <input id="idTag" type="text" class="form-control" />
+          </div>
+          <div class="my-3">
+            <input id="pwdTag" type="password" class="form-control" />
+          </div>
+          <button type="submit" class="btn btn-primary" id="subBtn">
+            전송
+          </button>
+          <button type="button" class="btn btn-danger" id="close">닫기</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- 1. 시작화면 만들기 -->
+    <div style="overflow: hidden">
+      <div class="slide-container">
+        <div class="slide-box">
+          <img
+            src="https://codingapple.com/wp-content/uploads/2022/02/car1.png"
+          />
+        </div>
+        <div class="slide-box">
+          <img
+            src="https://codingapple.com/wp-content/uploads/2022/02/car2.png"
+          />
+        </div>
+        <div class="slide-box">
+          <img
+            src="https://codingapple.com/wp-content/uploads/2022/02/car3.png"
+          />
+        </div>
+      </div>
+    </div>
+
+    <button class="slide-1">1</button>
+    <button class="slide-2">2</button>
+    <button class="slide-3">3</button>
+
+    <div style="height: 1000px"></div>
+
+    <div class="lorem" style="width: 200px; height: 100px; overflow-y: scroll">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae voluptas
+      voluptatum minus praesentium fugit debitis at, laborum ipsa itaque placeat
+      sit, excepturi eius. Nostrum perspiciatis, eligendi quae consectetur
+      
+    </div>
+
+    <!-- jQuery 설치 -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.3.min.js"
+      integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+      crossorigin="anonymous"
+    ></script>
+    <!-- bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $("#test-btn").on("click", () => {
+        $("#login").toggleClass("d-none");
+      });
+
+      $("#close").on("click", () => {
+        $("#login").toggleClass("d-none");
+      });
+
+      $('.black-bg').on('click',(e)=> {
+        // e.stopPropagation()
+        // console.log(e.target);
+        if (e.target === document.querySelector('.black-bg')) {
+          $("#login").toggleClass("d-none");
+        }
+      })
+
+      $("#idTag").on("input", (eId) => {
+        $("#pwdTag").on("input", (ePwd) => {
+          if (eId.target.value.length <= 6 || ePwd.target.value.length <= 6) {
+            $("#alert").css("display", "block");
+          } else {
+            $("#alert").css("display", "none");
+          }
+        });
+      });
+
+      document.getElementsByClassName('navbar-toggler')[0].addEventListener('click', ()=> {
+        let ulTag = document.getElementsByClassName('list-group')[0]
+        ulTag.classList.toggle('d-none') 
+      })
+
+      $("form").on("submit", (e) => {
+        if ($("#idTag").val() === "" || $("#pwdTag").val() === "") {
+          e.preventDefault();
+          alert("아이디와 비밀번호를 입력해주세요🙂");
+        } else if (
+          $("#idTag").val().length < 6 ||
+          $("#pwdTag").val().length < 6
+        ) {
+          e.preventDefault();
+          alert("짧다 친구야!!");
+        }
+        if (
+          !/\S+@\S+\.\S/.test($("#idTag").val()) ||
+          !/[A-Z]/.test($("#pwdTag").val())
+        ) {
+          e.preventDefault();
+          alert("이메일 형식에 맞지 않아!!");
+        }
+      });
+
+      var cnt = 0;
+      $(".badge").on("click", (e) => {
+        // e.target.innerHTML === 'Dark 🔄' ? e.target.innerHTML = 'Light 🔄' : e.target.innerHTML = 'Dark 🔄'
+        cnt += 1;
+        console.log(cnt);
+        if (cnt % 2) {
+          e.target.innerHTML = "Light 🔄";
+        } else {
+          e.target.innerHTML = "Dark 🔄";
+        }
+      });
+
+      // console.log(/a$/.test('abcd'))
+      // console.log(/^a/.test('abcd'))
+      // console.log(/a|b/.test('abcd'))
+      // console.log(/\S+@\S+\.\S+/.test('aaa@bbb.ccc'))
+
+      $(".slide-1").on("click", (e) => {
+        e.preventDefault();
+        $(".slide-container").css("transform", "translateX(0vw)");
+      });
+      $(".slide-2").on("click", (e) => {
+        e.preventDefault();
+        $(".slide-container").css("transform", "translateX(-100vw)");
+      });
+      $(".slide-3").on("click", (e) => {
+        e.preventDefault();
+        $(".slide-container").css("transform", "translateX(-200vw)");
+      });
+
+      $(window).on("scroll", () => {
+        let 비율 = ($(window).scrollTop()/1100)*100
+        if ($(window).scrollTop() >= 100) {
+          $(".navbar-brand").css("font-size", "10px");
+        } else {
+          $(".navbar-brand").css("font-size", "20px");
+        }
+        $('#width-scroll').css('width',`${비율}vw`)
+        // console.log($(window).scrollTop());
+      });
+
+      console.log(window.innerHeight);
+      console.log();
+      console.log(document.documentElement.scrollHeight);
+      
+
+      let a = document.querySelector('.lorem').scrollHeight
+      console.log(a)
+      $('.lorem').on('scroll',()=> {
+        console.log($('.lorem').scrollTop());
+        if ($('.lorem').scrollTop() === 140) {
+          alert('경고 마지막이야!!')
+        }
+        ;
+      })
+
+      
+    </script>
+  </body>
+</html>
