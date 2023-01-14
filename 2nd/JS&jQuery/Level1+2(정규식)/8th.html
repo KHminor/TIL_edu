@@ -77,11 +77,12 @@
     ></script>
     <script>
       $("#test-btn").on("click", () => {
-        $("#login").fadeIn(1000);
-        $("#login").toggleClass("d-none");
+        // $("#login").fadeIn(1000);
+        $("#login").toggleClass("d-none d-block");
       });
 
       $("#close").on("click", () => {
+        $("#login").fadeIn(1000);
         $("#login").toggleClass("d-none");
       });
 
