@@ -1,16 +1,19 @@
-import './App.css';
-import Main from './Routes/Main';
-import {Routes,Route, useNavigate} from 'react-router-dom'
+import "./App.css";
+import { Main } from "./Routes/Main";
+import { Routes, Route, useNavigate } from "react-router-dom";
 function App() {
-  let navigator = useNavigate()
+  let navigate = useNavigate();
   return (
     <div className="App">
-      <div onClick={()=> {
-        navigator('/main')
-      }} style={{height:'10vh', backgroundColor:'skyblue', cursor:'pointer'}}>고고</div>
+      <div
+        onClick={() => {
+          navigate("/main");
+        }}
+        style={{ height: "5vh", cursor: "pointer", backgroundColor: "skyblue" }}
+      ></div>
       <Routes>
-        <Route path='/main' element={<><Main/></>}/>
-      </Routes> 
+        <Route path="/main" element={<Main />} />
+      </Routes>
     </div>
   );
 }
