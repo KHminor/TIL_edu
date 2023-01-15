@@ -23,11 +23,12 @@
 
   <div class="container">
     <button class="btn btn-danger">더보기</button>
+    <button class="sort">가격 오름차순 정렬</button>
+    <button class="sort2">이름 내림차순 정렬</button>
+    <button class="sixItem">6만원 이하 상품만 보기</button>
   </div>
 
-  <div class="container">
-    <button class="sort">정렬</button>
-  </div>
+
 
   <!-- jQuery 설치 -->
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"
@@ -84,14 +85,77 @@
     })
 
     let 어레이 = ['a', 'g', 'f']
-    어레이.sort((a,b)=> {
-      if (a > b ) {
+    어레이.sort((a, b) => {
+      if (a > b) {
         return -1
       } else {
         return 1
       }
     })
-    console.log(어레이);
+
+
+    $('.sort').click(() => {
+      products.sort((a, b) => {
+        return a.price - b.price
+      })
+      $('.row').html('')
+      products.forEach((e, idx) => {
+        $('.row').append(`
+        <div class="col-sm-4">
+          <img src="https://via.placeholder.com/600" class="w-100">
+          <h5>${e.title}</h5>
+          <p>가격 : ${e.price}</p>
+        </div>
+        `)
+      })
+    })
+    // let 어레이2 = [7, 3, 5, 2, 40]
+    // 어레이2 = 어레이2.filter((e)=> {
+    //   return e%2
+    // })
+    // console.log(어레이2);
+
+    // let 어레이3 = [7, 3, 5, 2, 40]
+    // 어레이3 = 어레이3.map((e)=> {
+    //   return e*2
+    // })
+    // console.log(어레이3);
+
+    $('.sort2').click(() => {
+      products.sort((a, b) => {
+        if (a.title > b.title) {
+          return -1
+        } else {
+          return 1
+        }
+      })
+      $('.row').html('')
+      products.forEach((e, idx) => {
+        $('.row').append(`
+        <div class="col-sm-4">
+          <img src="https://via.placeholder.com/600" class="w-100">
+          <h5>${e.title}</h5>
+          <p>가격 : ${e.price}</p>
+        </div>
+        `)
+      })
+    })
+
+    $('.sixItem').click(() => {
+      let newproducts = products.filter((e) => {
+        return e.price <= 60000
+      })
+      $('.row').html('')
+      newproducts.forEach((e, idx) => {
+        $('.row').append(`
+        <div class="col-sm-4">
+          <img src="https://via.placeholder.com/600" class="w-100">
+          <h5>${e.title}</h5>
+          <p>가격 : ${e.price}</p>
+        </div>
+        `)
+      })
+    })
 
 
   </script>
