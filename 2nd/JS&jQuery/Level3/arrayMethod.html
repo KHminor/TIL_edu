@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ajax2</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+  <style>
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row">
+
+
+    </div>
+  </div>
+
+  <div class="container">
+    <button class="btn btn-danger">더보기</button>
+  </div>
+
+  <div class="container">
+    <button class="sort">정렬</button>
+  </div>
+
+  <!-- jQuery 설치 -->
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <!-- bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+  </script>
+  <script>
+    var products = [{
+        id: 0,
+        price: 70000,
+        title: 'Blossom Dress'
+      },
+      {
+        id: 1,
+        price: 50000,
+        title: 'Springfield Shirt'
+      },
+      {
+        id: 2,
+        price: 60000,
+        title: 'Black Monastery'
+      }
+    ];
+
+    products.forEach((e, idx) => {
+      $('.row').append(`
+        <div class="col-sm-4">
+          <img src="https://via.placeholder.com/600" class="w-100">
+          <h5>${e.title}</h5>
+          <p>가격 : ${e.price}</p>
+        </div>
+        `)
+    })
+
+    let pageNum = 1
+    $('.btn').click((e) => {
+      $.get(`https://codingapple1.github.io/js/more${pageNum}.json`).done((r) => {
+        console.log(r);
+        pageNum += 1
+        r.forEach((item) => {
+          $('.row').append(`
+          <div class="col-sm-4">
+            <img src="https://via.placeholder.com/600" class="w-100">
+            <h5>${item.title}</h5>
+            <p>가격 : ${item.price}</p>
+          </div>
+          `)
+        })
+      }).fail(() => {
+        alert('더이상 상품이 없어여')
+      })
+    })
+
+    let 어레이 = ['a', 'g', 'f']
+    어레이.sort((a,b)=> {
+      if (a > b ) {
+        return -1
+      } else {
+        return 1
+      }
+    })
+    console.log(어레이);
+
+
+  </script>
+</body>
+
+</html>
