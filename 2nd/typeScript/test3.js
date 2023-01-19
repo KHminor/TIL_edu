@@ -1,0 +1,1 @@
+// type CodeType = string | number[]
