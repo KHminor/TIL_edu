@@ -1,5 +1,5 @@
 1. React 시작
-   * npm create-react-app {{프로젝트명}}
+   * npm create-react-app {{프로젝트명}} 
 
 
 
