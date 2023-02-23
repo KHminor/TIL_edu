@@ -1,12 +1,16 @@
 
 import './App.css';
+import Average from './Average';
 import Info from './Info';
+import Check from './Check';
 
 function App() {
 
   return (
     <div className="App">
-      <Info/>
+      {/* <Info/> */}
+      {/* <Average/> */}
+      <Check/>
     </div>
   );
 }
