@@ -192,8 +192,8 @@ function App() {
                     axios
                       .get(
                         "https://codingapple1.github.io/shop/data" +
-                          urlNum +
-                          ".json"
+                        urlNum +
+                        ".json"
                       )
                       .then((d) => {
                         setLoading(false);
