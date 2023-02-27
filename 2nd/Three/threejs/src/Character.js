@@ -1,43 +1,36 @@
-import * as THREE from 'three'
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { useRef } from 'react';
+import React, { useRef, Suspense } from "react";
+import * as THREE from "three";
+import { useFrame } from "@react-three/fiber";
+import { OrbitControls, useGLTF } from "@react-three/drei";
 
+// npx gltfjsx scene.gltf로 생성(아래 링크 유튭 참조!)
+function Model() {
+  const { nodes, materials }= useGLTF("/scene.gltf"); // 동작만 확인했기 때문에 일단 any로 둠
+  return (
+    <group {...props} dispose={null}>
+      <group rotation={[-Math.PI / 2, 0, 0]}>
+        <group rotation={[Math.PI / 2, 0, 0]}>
+          <mesh
+            geometry={nodes.mesh_all1_Texture1_0.geometry}
+            material={materials.Texture1}
+          />
+        </group>
+      </group>
+    </group>
+  );
+}
 
 function Character() {
-  const canvas = useRef()
-  console.log(canvas.current);
-  // 1. 장면 만들기 
-  let scene = new THREE.Scene()
-  // 2. 브라우저에 렌더링
-  // 3D 요소를 웹 브라우저에 보여주려고 할 경우 WebGL 를 사용한다고 함 
-  let renderer = new THREE.WebGLRenderer({
-    // 웹 브라우저 어디에 보여줄지는 여기서 지정
-    canvas: document.querySelector('#canvas')
-  })
-
-  // 3D model을 보여줄 때 필요한 것들
-  // 1.카메라, 2.조명, 3.배경
-  
-  //  PerspectiveCamera = 원근법, OrthographicCamera = 원근법 X
-  let camera = new THREE.PerspectiveCamera(30,1)
-
-  // 다운받은 것을(gltf파일의 경우) 보여주고자 할 경우
-  let loader = new GLTFLoader()
-  loader.load('scene.gltf', function(gltf) {
-    scene.add(gltf.scene)
-    renderer.render(scene, camera)
-  })
-
-  
-
+  const object3d = useRef(!null);
+  useFrame((state, delta) => (object3d.current.rotation.y += 0.005));
   return (
-    <>
-      <canvas ref={canvas} id='canvas' style={{width: '300', height: '300'}}>
-      
-      </canvas>
-    </>
-  )
+    // object3D: 빈 지역 공간
+    <object3D ref={object3d}>
+      <OrbitControls />
+      <Suspense fallback={null}>
+        <Model />
+      </Suspense>
+    </object3D>
+  );
 }
 export default Character
