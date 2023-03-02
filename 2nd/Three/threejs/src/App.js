@@ -58,24 +58,20 @@ function Model(props) {
 }
 
 
+
 function App() {
-  const ref = useRef()
   return (
-    <div className='App'>
-      {/* <div className="wrapper"> */}
-        {/* <div className="card"> */}
-          {/* <div className="product-canvas"> */}
-          <Canvas>
-            <Suspense fallback={null}>
-              <ambientLight />
-              <spotLight intensity={0.9} angle={0.1} penumbra={1} position={[10,15,10]} castShadow/>
-              <Model/>
-              <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
-            </Suspense>
+    <div className='h-screen w-screen'>
+          <Canvas style={{height: '100vh', width: '100vw'}}>
+            <mesh scale={1} position={[0,0,0]}>
+              <Suspense fallback={null}>
+                <ambientLight />
+                <spotLight intensity={0.9} angle={0.1} penumbra={1} position={[10,15,10]} castShadow/>
+                <Model/>
+                <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} autoRotate={true}/>
+              </Suspense>
+            </mesh>
           </Canvas>
-          {/* </div> */}
-        {/* </div> */}
-      {/* </div> */}
     </div>
   );
 }
