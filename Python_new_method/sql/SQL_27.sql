@@ -10,5 +10,5 @@ SELECT T1.MEMBER_NAME, T2.REVIEW_TEXT, DATE_FORMAT(T2.REVIEW_DATE, '%Y-%m-%d') A
                         GROUP BY MEMBER_ID
                         ORDER BY COUNT(MEMBER_ID) DESC
                         LIMIT 1
-                          )
+                        )
     ORDER BY 3, 2 
