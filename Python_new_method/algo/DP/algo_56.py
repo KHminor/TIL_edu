@@ -14,3 +14,4 @@ for i in range(int(input())):
 # for _ in range(int(input())):
 #     n,m = map(int,input().split())
 #     print(int(factorial(m)/(factorial(m-n)*factorial(n))))
+#     print(int(factorial(m)/(factorial(m-n)*factorial(n))))
