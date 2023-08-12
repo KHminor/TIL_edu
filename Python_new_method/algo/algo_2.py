@@ -13,7 +13,7 @@ def solution(n,a,b):
             else : new_li.append(li[i*2+1])
         li = new_li
         if flag: break
-    return cnt
+    return cnt 
 
 
 
