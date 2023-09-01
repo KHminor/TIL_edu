@@ -12,5 +12,3 @@ if len(s)> len(t):
 if len(t)//len(s)*s == t or len(t)*s == len(s)*t: print(1)
 else: print(0)
 
-# abcdef
-# abcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefab
