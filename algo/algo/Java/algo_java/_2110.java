@@ -13,40 +13,36 @@ public class _2110 {
         for (int i=0; i<n; i++) check[i] = Integer.parseInt(br.readLine());
         Arrays.sort(check);
 
-        // 거리 차 간 사이 값 배열 생성
-        int[] dist = java.util.stream.IntStream.rangeClosed(check[0],check[check.length-1]).toArray();
-
         // 이분 탐색 시작
-        int[] result_li = new int[c];
-        B_Search(check,dist, c, result_li);
-
-        int result = 1000000000;
-        for (int i=1; i<result_li.length; i++) result = Math.min(result, result_li[i]-result_li[i-1]);
-        System.out.println(result);
+        System.out.println(B_Search(check, c));
 
     }
 
-    public static void B_Search(int[] check, int[] dist, int c, int[] result_li) {
+    public static int B_Search(int[] check, int c) {
         // 이분 탐색 시작
         int s = 0;
-        int e = dist.length-1;
+        int e = check[check.length-1]-check[0];
+
+        int mx_range = 0;
 
         while (s<=e) {
             int m = (s+e)/2;
-            int now_allow = check[0]+dist[m]-1;
-            result_li[0] = check[0];
             int cnt = 1;
-            for (int num: check) {
-                if (num>now_allow) {
-                    result_li[cnt] = num;
+            int now = check[0];
+
+            for (int i=1; i<check.length; i++) {
+                if (check[i]-now >= m) {
                     cnt++;
-                    if (cnt>=c) break;
-                    now_allow = num+dist[m]-1;
+                    now = check[i];
                 }
             }
-            if (cnt == c) break;
-            else if (cnt > c) s = m;
-            else e = m;
+
+            if (cnt >= c) {
+                mx_range = Math.max(mx_range, m);
+                s = m+1;
+            }
+            else e = m-1;
         }
+        return mx_range;
     }
 }
