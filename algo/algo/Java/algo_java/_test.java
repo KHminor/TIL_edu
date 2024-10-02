@@ -1,10 +1,24 @@
-import java.util.Collections;
-import java.util.Deque;
-import java.util.LinkedList;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class _test {
     public static void main(String[] args) {
-        Deque<String> stack = new LinkedList<>();
-//        System.out.println(Collections.frequency(Integer.toBinaryString(22),"1"));
+        int[][] li = {
+                {3, 2},
+                {1, 5},
+                {3, 1},
+                {2, 4},
+                {1, 2}
+        };
+
+        Arrays.sort(li, new Comparator<int[]>() {
+           public int compare(int[] o1, int[] o2) {
+               if (o1[0] != o2[0]) return Integer.compare(o1[0],o2[0]);
+               else return Integer.compare(o1[1],o2[1]);
+           }
+        });
+        int[] ll = {4,5,6,2};
+        System.out.println(Arrays.stream(ll).max().orElse(-1));
+
     }
 }
