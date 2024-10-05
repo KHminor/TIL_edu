@@ -12,13 +12,37 @@ public class _test {
         };
 
         Arrays.sort(li, new Comparator<int[]>() {
-           public int compare(int[] o1, int[] o2) {
-               if (o1[0] != o2[0]) return Integer.compare(o1[0],o2[0]);
-               else return Integer.compare(o1[1],o2[1]);
-           }
+            public int compare(int[] o1, int[] o2) {
+                if (o1[0]==o2[0]) return Integer.compare(o1[1],o2[1]);
+                return Integer.compare(o1[1],o2[1]);
+            }
         });
         int[] ll = {4,5,6,2};
         System.out.println(Arrays.stream(ll).max().orElse(-1));
 
+        int hap = Arrays.stream(li).flatMapToInt(Arrays::stream).sum();
+        System.out.println(hap);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Arrays.sort(li, new Comparator<int[]>() {
+            public int compare(int[] o1, int[] o2) {
+                if (o1[0] != o2[0]) return Integer.compare(o1[0],o2[0]);
+                else return Integer.compare(o1[1],o2[1]);
+            }
+        });
     }
 }
