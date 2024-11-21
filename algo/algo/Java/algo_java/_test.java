@@ -23,6 +23,9 @@ public class _test {
         int hap = Arrays.stream(li).flatMapToInt(Arrays::stream).sum();
         System.out.println(hap);
 
+        String x = "0123456";
+        System.out.println(x.substring(0));
+
 
 
 
