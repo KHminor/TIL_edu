@@ -58,7 +58,7 @@ public class _14500 {
         }
     }
 
-    private static void findTetro() {
+    private static void findTetro() { // 찾기
         for (int i=0; i<N; i++) {
             for (int j=0; j<M; j++) {
                 detailTetro(i,j);
