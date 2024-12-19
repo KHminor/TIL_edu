@@ -10,6 +10,7 @@ public class _1926 {
     static int[] Wid = {0,1,0,-1};
     static int[] Hei = {1,0,-1,0};
 
+//    Before
 //    public static void main(String[] args) throws IOException {
 //        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 //        StringTokenizer st = new StringTokenizer(br.readLine());
