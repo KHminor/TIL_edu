@@ -94,6 +94,7 @@ public class _1926 {
         for (int num: result) System.out.println(num);
     }
 
+    // bfs
     public static int bfs() {
         int cnt = 1;
         while (!queue.isEmpty()) {
