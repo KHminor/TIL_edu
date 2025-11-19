@@ -9,17 +9,17 @@ public class bj_1158 {
         bw.write("<");
         String[] NK = br.readLine().split(" ");
         int N = Integer.parseInt(NK[0]);
-        int c_N = N;
+        int n_N = N;
         int K = Integer.parseInt(NK[1]);
 
         ArrayList<Integer> arr = IntStream.rangeClosed(1,N).boxed().collect(Collectors.toCollection(ArrayList::new));
         int now = -1;
         for (int i=0; i<N; i++) {
-            now = (now+K)%c_N;
+            now = (now+K)%n_N;
             bw.write(String.valueOf(arr.get(now)));
             arr.remove(now--);
-            c_N--;
-            if (c_N!=0) {
+            n_N--;
+            if (n_N!=0) {
                 bw.write(", ");
             }
         }
